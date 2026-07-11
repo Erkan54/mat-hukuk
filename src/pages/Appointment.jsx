@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import PageHero from '../components/common/PageHero';
-import { hukukAlanlari, gorusmeTurleri, saatAraliklari } from '../data/appointmentOptions';
+import AppointmentCalendar from '../components/appointment/AppointmentCalendar';
+import { hukukAlanlari, gorusmeTurleri } from '../data/appointmentOptions';
 
 export default function Appointment() {
   const [formData, setFormData] = useState({
@@ -90,7 +91,7 @@ export default function Appointment() {
       <section className="section-padding bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-5 gap-12">
-            {/* Info */}
+            {/* Left side — Info + Calendar */}
             <motion.div
               className="lg:col-span-2"
               initial={{ opacity: 0, y: 30 }}
@@ -131,9 +132,27 @@ export default function Appointment() {
                   </div>
                 </div>
               </div>
+
+              {/* Calendar */}
+              <div className="mt-8">
+                <h3 className="font-serif text-lg font-semibold text-text-primary mb-4 flex items-center gap-2">
+                  <svg className="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  Tarih & Saat Seçimi
+                </h3>
+                <AppointmentCalendar
+                  selectedDate={formData.tarih}
+                  selectedTime={formData.saatAraligi}
+                  onDateSelect={(date) => handleChange('tarih', date)}
+                  onTimeSelect={(time) => handleChange('saatAraligi', time)}
+                  dateError={errors.tarih}
+                  timeError={errors.saatAraligi}
+                />
+              </div>
             </motion.div>
 
-            {/* Form */}
+            {/* Right side — Form */}
             <motion.div
               className="lg:col-span-3"
               initial={{ opacity: 0, y: 30 }}
@@ -195,21 +214,35 @@ export default function Appointment() {
                     </div>
                   </div>
 
-                  <div className="grid sm:grid-cols-2 gap-5">
-                    <div>
-                      <label className="block text-sm font-medium text-text-primary mb-2">Tercih Edilen Tarih *</label>
-                      <input type="date" value={formData.tarih} onChange={(e) => handleChange('tarih', e.target.value)} className={inputClass('tarih')} />
-                      {errors.tarih && <p className="text-xs text-error mt-1">{errors.tarih}</p>}
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-text-primary mb-2">Saat Aralığı *</label>
-                      <select value={formData.saatAraligi} onChange={(e) => handleChange('saatAraligi', e.target.value)} className={inputClass('saatAraligi')}>
-                        <option value="">Seçiniz</option>
-                        {saatAraliklari.map(s => <option key={s} value={s}>{s}</option>)}
-                      </select>
-                      {errors.saatAraligi && <p className="text-xs text-error mt-1">{errors.saatAraligi}</p>}
-                    </div>
-                  </div>
+                  {/* Selected date/time summary badge */}
+                  {(formData.tarih || formData.saatAraligi) && (
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      className="flex flex-wrap items-center gap-3 p-4 bg-navy/5 rounded-xl border border-navy/10"
+                    >
+                      <svg className="w-4 h-4 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                      <span className="text-sm text-text-primary font-medium">
+                        Seçilen:
+                      </span>
+                      {formData.tarih && (
+                        <span className="text-xs bg-navy text-white px-3 py-1 rounded-full">
+                          {new Date(formData.tarih + 'T00:00:00').toLocaleDateString('tr-TR', {
+                            day: 'numeric', month: 'long', year: 'numeric'
+                          })}
+                        </span>
+                      )}
+                      {formData.saatAraligi && (
+                        <span className="text-xs bg-gold text-white px-3 py-1 rounded-full">
+                          {formData.saatAraligi} - {(parseInt(formData.saatAraligi.split(':')[0]) + 1).toString().padStart(2, '0')}:00
+                        </span>
+                      )}
+                      {!formData.tarih && <span className="text-xs text-text-secondary italic">← Sol taraftan tarih seçin</span>}
+                      {formData.tarih && !formData.saatAraligi && <span className="text-xs text-text-secondary italic">← Saat seçin</span>}
+                    </motion.div>
+                  )}
 
                   <div>
                     <label className="block text-sm font-medium text-text-primary mb-2">Mesaj / Açıklama</label>
