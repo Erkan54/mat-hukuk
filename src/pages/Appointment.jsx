@@ -90,78 +90,71 @@ export default function Appointment() {
 
       <section className="section-padding bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-5 gap-12">
-            {/* Left side — Info + Calendar */}
+          {/* Görüşme Türleri Bilgisi (Yatay Kartlar) */}
+          <motion.div 
+            className="grid md:grid-cols-3 gap-6 mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <div className="flex items-center gap-4 p-5 bg-white rounded-2xl border border-border/30 shadow-sm hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 bg-navy/5 rounded-xl flex items-center justify-center text-xl shrink-0">🏢</div>
+              <div>
+                <h4 className="font-serif text-base font-semibold text-text-primary">Ofiste Görüşme</h4>
+                <p className="text-xs text-text-secondary mt-0.5">Büromuzda yüz yüze detaylı görüşme</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4 p-5 bg-white rounded-2xl border border-border/30 shadow-sm hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 bg-navy/5 rounded-xl flex items-center justify-center text-xl shrink-0">💻</div>
+              <div>
+                <h4 className="font-serif text-base font-semibold text-text-primary">Online Görüşme</h4>
+                <p className="text-xs text-text-secondary mt-0.5">Video konferans ile uzaktan danışmanlık</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4 p-5 bg-white rounded-2xl border border-border/30 shadow-sm hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 bg-navy/5 rounded-xl flex items-center justify-center text-xl shrink-0">📞</div>
+              <div>
+                <h4 className="font-serif text-base font-semibold text-text-primary">Telefon Görüşmesi</h4>
+                <p className="text-xs text-text-secondary mt-0.5">Telefon üzerinden hızlı danışmanlık</p>
+              </div>
+            </div>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-5 gap-10 items-start">
+            {/* Sol Sütun — 1. Tarih & Saat Seçimi */}
             <motion.div
-              className="lg:col-span-2"
+              className="lg:col-span-2 space-y-4"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
             >
-              <h2 className="font-serif text-2xl font-bold text-text-primary mb-4">Randevu Hakkında</h2>
-              <div className="space-y-4 text-sm text-text-secondary leading-relaxed">
-                <p>Randevu talepleri uygunluk durumuna göre değerlendirildikten sonra tarafınıza dönüş yapılacaktır.</p>
-                <p>Bu sistem direkt randevu oluşturmaz, randevu talebi oluşturur. Avukatın uygunluğu doğrulandıktan sonra sizinle iletişime geçilecektir.</p>
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-7 h-7 bg-navy text-white text-xs font-bold rounded-full flex items-center justify-center shrink-0">1</div>
+                <h3 className="font-serif text-xl font-bold text-text-primary">Tarih & Saat Seçimi</h3>
               </div>
-
-              <div className="mt-8 space-y-4">
-                <div className="flex items-center gap-3 p-4 bg-white rounded-xl border border-border/30">
-                  <div className="w-10 h-10 bg-navy/5 rounded-lg flex items-center justify-center">
-                    <span className="text-lg">🏢</span>
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-text-primary">Ofiste Görüşme</p>
-                    <p className="text-xs text-text-secondary">Yüz yüze görüşme</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3 p-4 bg-white rounded-xl border border-border/30">
-                  <div className="w-10 h-10 bg-navy/5 rounded-lg flex items-center justify-center">
-                    <span className="text-lg">💻</span>
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-text-primary">Online Görüşme</p>
-                    <p className="text-xs text-text-secondary">Video konferans ile</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3 p-4 bg-white rounded-xl border border-border/30">
-                  <div className="w-10 h-10 bg-navy/5 rounded-lg flex items-center justify-center">
-                    <span className="text-lg">📞</span>
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-text-primary">Telefon Görüşmesi</p>
-                    <p className="text-xs text-text-secondary">Telefonla danışmanlık</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Calendar */}
-              <div className="mt-8">
-                <h3 className="font-serif text-lg font-semibold text-text-primary mb-4 flex items-center gap-2">
-                  <svg className="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                  Tarih & Saat Seçimi
-                </h3>
-                <AppointmentCalendar
-                  selectedDate={formData.tarih}
-                  selectedTime={formData.saatAraligi}
-                  onDateSelect={(date) => handleChange('tarih', date)}
-                  onTimeSelect={(time) => handleChange('saatAraligi', time)}
-                  dateError={errors.tarih}
-                  timeError={errors.saatAraligi}
-                />
-              </div>
+              
+              <AppointmentCalendar
+                selectedDate={formData.tarih}
+                selectedTime={formData.saatAraligi}
+                onDateSelect={(date) => handleChange('tarih', date)}
+                onTimeSelect={(time) => handleChange('saatAraligi', time)}
+                dateError={errors.tarih}
+                timeError={errors.saatAraligi}
+              />
             </motion.div>
 
-            {/* Right side — Form */}
+            {/* Sağ Sütun — 2. Randevu Formu */}
             <motion.div
-              className="lg:col-span-3"
+              className="lg:col-span-3 space-y-4"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <div className="bg-white rounded-2xl p-8 border border-border/30 shadow-sm">
-                <h2 className="font-serif text-2xl font-bold text-text-primary mb-6">Randevu Formu</h2>
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-7 h-7 bg-gold text-white text-xs font-bold rounded-full flex items-center justify-center shrink-0">2</div>
+                <h3 className="font-serif text-xl font-bold text-text-primary">Bilgilerinizi Girin</h3>
+              </div>
 
+              <div className="bg-white rounded-2xl p-8 border border-border/30 shadow-sm">
                 {status === 'success' && (
                   <div className="mb-6 p-4 bg-success/10 text-success rounded-xl text-sm">
                     <strong>Randevu talebiniz başarıyla alınmıştır.</strong>
@@ -174,6 +167,14 @@ export default function Appointment() {
                     Randevu talebi gönderilirken bir sorun oluştu. Lütfen daha sonra tekrar deneyiniz.
                   </div>
                 )}
+
+                {/* Önemli Bilgilendirme Kutusu */}
+                <div className="p-4 bg-navy/5 text-navy rounded-xl text-xs mb-6 flex items-start gap-2.5">
+                  <span className="text-sm shrink-0">ℹ️</span>
+                  <p className="leading-normal">
+                    <strong>Önemli Bilgilendirme:</strong> Bu sistem doğrudan randevu onaylamaz, bir ön talep oluşturur. Talebiniz avukatlarımızın uygunluk durumuna göre değerlendirilerek en kısa sürede onay için sizinle iletişime geçilecektir.
+                  </p>
+                </div>
 
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div>
