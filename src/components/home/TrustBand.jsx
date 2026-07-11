@@ -10,8 +10,8 @@ const trustItems = [
 
 export default function TrustBand() {
   return (
-    <section className="py-12 bg-white border-y border-border/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-12 bg-white border-y border-border/50 relative overflow-hidden bg-watermark">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
           {trustItems.map((item, index) => (
             <motion.div

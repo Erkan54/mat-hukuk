@@ -5,18 +5,18 @@ import SectionTitle from '../common/SectionTitle';
 const principles = [
   {
     number: '01',
-    title: 'Şeffaf Bilgilendirme',
-    description: 'Hukuki süreçleriniz hakkında her aşamada açık ve anlaşılır bilgilendirme yapıyoruz.'
+    title: 'Sır Saklama ve Gizlilik',
+    description: 'Müvekkillerimize ait tüm bilgi ve belgeleri 1136 sayılı Avukatlık Kanunu ve uluslararası meslek standartlarında sır kapsamında hassasiyetle gizli tutuyoruz.'
   },
   {
     number: '02',
-    title: 'Süreç Takibi',
-    description: 'Davanızın veya danışmanlık sürecinizin her adımını titizlikle takip ediyor ve raporluyoruz.'
+    title: 'Şeffaf Bilgilendirme',
+    description: 'Sakarya Adliyesi ve çevre illerdeki dava süreçleri ve gelişmeler hakkında müvekkillerimizi sürekli bir bilgi akışıyla bilgilendiriyoruz.'
   },
   {
     number: '03',
-    title: 'Çözüm Odaklı Yaklaşım',
-    description: 'Müvekkillerimizin haklarını en etkin şekilde korumak için stratejik çözümler geliştiriyoruz.'
+    title: 'Bağımsız Savunma',
+    description: 'Etkin bir hak arama özgürlüğü için savunmanın bağımsızlığını temel kabul ediyor, tüm kişi ve kurumlara karşı bağımsız hareket ediyoruz.'
   }
 ];
 
@@ -38,20 +38,34 @@ export default function AboutPreview() {
           {/* Left */}
           <div>
             <SectionTitle
-              label="Hakkımızda"
-              title="Güvenilir hukuki destek"
-              subtitle="Büromuz, hukuki uyuşmazlıkların çözümünde şeffaflık, güven ve müvekkil odaklı çalışma anlayışını esas alır."
+              label="Sakarya Avukat - Hakkımızda"
+              title="Sakarya'da güvenilir hukuki destek"
+              subtitle="Sakarya merkezli büromuz, hukuki uyuşmazlıkların çözümünde şeffaflık, güven ve müvekkil odaklı çalışma anlayışını esas alır. Sakarya Adapazarı'ndaki ofisimizde müvekkillerimize en iyi hizmeti sunmayı hedefliyoruz."
               centered={false}
             />
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mt-6 text-text-secondary text-sm leading-relaxed"
+            >
+              <p>
+                <strong>MAT & ALPGÜL Hukuk Danışmanlık</strong>, Av. Umut Alpgül ve Av. Mehmet Akif Trabzon tarafından <strong>Sakarya/Adapazarı</strong> merkezli kurulmuştur. Kurumsal çalışma anlayışımız ve Sakarya'da Boşanma Avukatı, Sakarya'da Ağır Ceza Avukatı, Sakarya'da İcra Avukatı gibi birçok alandaki tecrübemizle müvekkillerimize dinamik ve yaratıcı hukuki çözümler sunuyoruz.
+              </p>
+            </motion.div>
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
+              className="mt-8"
             >
               <Link
                 to="/hakkimizda"
-                className="inline-flex items-center gap-2 px-6 py-3 mt-2 bg-navy text-white font-semibold rounded-lg hover:bg-navy-dark transition-all duration-300 group"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-navy text-white font-semibold rounded-lg hover:bg-navy-dark transition-all duration-300 group"
               >
                 Detaylı İnceleme
                 <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">

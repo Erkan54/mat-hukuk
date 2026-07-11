@@ -4,8 +4,8 @@ import { siteInfo } from '../../data/siteInfo';
 
 export default function ContactCTA() {
   return (
-    <section className="section-padding bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="section-padding bg-white relative overflow-hidden bg-watermark">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left */}
           <div>

@@ -33,6 +33,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+p, .text-justify {
+  text-align: justify;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-serif);
 }
@@ -235,4 +239,22 @@ input:focus, textarea:focus, select:focus {
 
 .publication-card:hover .pub-line {
   width: 60px;
+}
+
+/* Background watermark style using bina.jpg */
+.bg-watermark {
+  position: relative;
+}
+
+.bg-watermark::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/bina.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.1; /* 10% opacity as requested */
+  pointer-events: none;
+  z-index: 0;
 }

@@ -16,9 +16,9 @@ export default function Kvkk() {
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="bg-white rounded-2xl p-8 lg:p-12 border border-border/30 shadow-sm">
             <div className="space-y-6 text-text-secondary leading-relaxed text-sm">
               <h2 className="font-serif text-2xl font-bold text-text-primary">Kişisel Verilerin Korunması Hakkında Aydınlatma Metni</h2>
-              <p>Yılmaz & Demir Hukuk Bürosu olarak, 6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") kapsamında, kişisel verilerinizin korunmasına büyük önem vermekteyiz.</p>
+              <p>MAT & ALPGÜL Hukuk Danışmanlık olarak, 6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") kapsamında, kişisel verilerinizin korunmasına büyük önem vermekteyiz.</p>
               <h3 className="font-serif text-lg font-semibold text-text-primary">1. Veri Sorumlusu</h3>
-              <p>Veri sorumlusu sıfatıyla, kişisel verileriniz Yılmaz & Demir Hukuk Bürosu tarafından aşağıda açıklanan amaçlar doğrultusunda işlenmektedir.</p>
+              <p>Veri sorumlusu sıfatıyla, kişisel verileriniz MAT & ALPGÜL Hukuk Danışmanlık tarafından aşağıda açıklanan amaçlar doğrultusunda işlenmektedir.</p>
               <h3 className="font-serif text-lg font-semibold text-text-primary">2. Kişisel Verilerin İşlenme Amacı</h3>
               <p>Kişisel verileriniz; hukuki danışmanlık hizmetlerinin sunulması, randevu talep süreçlerinin yürütülmesi, iletişim faaliyetlerinin yürütülmesi, yasal yükümlülüklerin yerine getirilmesi amaçlarıyla işlenmektedir.</p>
               <h3 className="font-serif text-lg font-semibold text-text-primary">3. İşlenen Kişisel Veriler</h3>

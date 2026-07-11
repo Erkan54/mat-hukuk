@@ -5,8 +5,8 @@ import { practiceAreas } from '../../data/practiceAreas';
 
 export default function PracticeAreasPreview() {
   return (
-    <section className="section-padding bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="section-padding bg-white relative overflow-hidden bg-watermark">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle
           label="Hizmet Alanları"
           title="Uzmanlık alanlarımız"

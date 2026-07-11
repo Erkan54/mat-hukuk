@@ -26,10 +26,10 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <Link to="/" className="inline-block mb-4">
               <span className="font-serif text-2xl font-bold text-white">
-                MAT <span className="text-gold">Hukuk</span>
+                MAT & ALPGÜL <span className="text-gold">Hukuk</span>
               </span>
               <span className="block text-[10px] tracking-[0.3em] uppercase text-white/60 mt-0.5">
-                Hukuk Bürosu
+                Hukuk Danışmanlık
               </span>
             </Link>
             <p className="text-white/60 text-sm leading-relaxed mt-4">
@@ -109,9 +109,14 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-white/40 text-sm">
-              © {new Date().getFullYear()} {siteInfo.name}. Tüm hakları saklıdır.
-            </p>
+            <div className="text-center md:text-left">
+              <p className="text-white/40 text-sm">
+                © {new Date().getFullYear()} {siteInfo.name}. Tüm hakları saklıdır.
+              </p>
+              <p className="text-white/30 text-xs mt-1">
+                Ahmet Nurullah Erkan tarafından dizayn edilmiştir. İletişim: ahmetnurullaherkan@gmail.com
+              </p>
+            </div>
             <p className="text-white/30 text-xs">
               Bu site bilgilendirme amaçlıdır ve hukuki danışmanlık niteliği taşımaz.
             </p>

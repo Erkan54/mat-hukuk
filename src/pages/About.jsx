@@ -55,16 +55,26 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="font-serif text-3xl font-bold text-text-primary mb-6">Büro Profili</h2>
+              <h2 className="font-serif text-3xl font-bold text-text-primary mb-6">Sakarya Avukat - Büro Profili</h2>
               <div className="space-y-4 text-text-secondary leading-relaxed">
                 <p>
-                  Yılmaz & Demir Hukuk Bürosu, 2014 yılında İstanbul'da kurulmuş olup, geniş kapsamlı hukuki danışmanlık ve dava takibi hizmetleri sunmaktadır.
+                  <strong>Sakarya Avukat</strong> MAT & ALPGÜL Hukuk Danışmanlık, Av. Umut Alpgül ve Av. Mehmet Akif Trabzon tarafından kurulmuştur. <strong>Sakarya</strong>'da Avukat olarak sahip olduğumuz kurumsal ve profesyonel çalışma anlayışı ile başta <strong>Sakarya'da Boşanma Avukatı</strong>, <strong>Sakarya'da Ağır Ceza Avukatı</strong>, <strong>Sakarya'da İcra Avukatı</strong>, Şirket Danışmanlığı ve Alacak Davaları olmak üzere müvekkillerimize birçok alanda avukatlık hizmeti vermektedir.
                 </p>
                 <p>
-                  Büromuz, ceza hukuku, aile hukuku, iş hukuku, ticaret hukuku, şirketler hukuku, gayrimenkul hukuku, icra ve iflas hukuku ile bilişim ve KVKK hukuku alanlarında uzmanlaşmış kadrosuyla müvekkillerine etkin hukuki destek sağlamaktadır.
+                  <strong>Sakarya Avukat</strong> MAT & ALPGÜL Hukuk Danışmanlık Merkezi <strong>Sakarya/Adapazarı</strong> olan ofisimiz, uzun yıllardır mesleki birikim ve tecrübeye sahip olmanın yanı sıra kendisini akademik olarak geliştirmiş alanında uzman geniş ve etkili bir kadroya sahiptir. Kurulduğu günden bu yana deneyimli ve aynı zamanda dinamik yapısıyla farklı sektörlerden gelen gerçek ve tüzel kişi müvekkillerine, müvekkillerinin ticari hedeflerini ve gelişme taleplerini de göz önüne alarak en iyi hizmeti vermek gayesiyle çalışmalarına devam etmektedir.
                 </p>
                 <p>
-                  Hukuki uyuşmazlıkların çözümünde müvekkil menfaatini ön planda tutan, şeffaf ve çözüm odaklı yaklaşımımızla güvenilir bir hukuki partner olmayı hedefliyoruz.
+                  Görünenin ardına bakarak, müvekkilleri için yaratıcı çözümler bulmakta ve müvekkillerle kurulan yakın işbirliği sayesinde onların iş hedeflerine ulaşmalarında büyük destek sağlamaktadır. <strong>Sakarya</strong>'da avukat-müvekkil ilişkileri karşılıklı güven esasına dayanır.
+                </p>
+              </div>
+
+              <h2 className="font-serif text-3xl font-bold text-text-primary mb-6 mt-12">Sakarya ile Geçmişimiz</h2>
+              <div className="space-y-4 text-text-secondary leading-relaxed">
+                <p>
+                  MAT & ALPGÜL Hukuk Danışmanlık olarak, köklerimiz <strong>Sakarya</strong>'nın tarihine ve kültürel dokusuna derinden bağlıdır. <strong>Sakarya</strong>'nın ticaret hayatından aile yapısına, <strong>Sakarya Adliyesi</strong>'nden <strong>Adapazarı</strong> merkezindeki ofisimize kadar her alanda hukuki ihtiyaçları karşılarken, şehrimizin dinamiklerini çok iyi biliyoruz.
+                </p>
+                <p>
+                  <strong>Sakarya</strong> halkına ve <strong>Sakarya</strong>'daki işletmelere hizmet etmek bizim için bir gurur kaynağıdır. <strong>Sakarya</strong>'nın <strong>Sapanca</strong>, <strong>Hendek</strong>, <strong>Akyazı</strong>, <strong>Geyve</strong>, <strong>Karasu</strong>, <strong>Kocaali</strong> gibi ilçelerinde edindiğimiz tecrübelerle, <strong>Sakarya</strong>lı hemşehrilerimizin haklarını en iyi şekilde savunmayı sürdürüyoruz. <strong>Sakarya</strong>'da avukat arayanlar için güvenilir bir çözüm ortağı olarak hizmet vermeye devam ediyoruz.
                 </p>
               </div>
             </motion.div>
@@ -75,16 +85,19 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              <h2 className="font-serif text-3xl font-bold text-text-primary mb-6">Çalışma Prensipleri</h2>
+              <h2 className="font-serif text-3xl font-bold text-text-primary mb-6">Mesleki İlkelerimiz</h2>
               <div className="space-y-4 text-text-secondary leading-relaxed">
                 <p>
-                  Müvekkillerimizle ilişkilerimizde karşılıklı güven ve saygı esasını temel alıyoruz. Her hukuki sürecin başlangıcında müvekkilimize sürecin olası sonuçları, riskleri ve maliyetleri hakkında kapsamlı bilgilendirme yapıyoruz.
+                  MAT & ALPGÜL Hukuk Danışmanlık, 21. yüzyılda hukukun ve avukatlık mesleğinin hak arama özgürlüğünün en önemli güvence mekanizması olduğu bilinciyle, avukat-müvekkil arasında temel mesleki ilkelere hassasiyet göstermektedir. Bu sebeple <strong>Sakarya</strong> hukuk ofisimizin en temelinde Avukatlık meslek ilkeleri gelmektedir.
                 </p>
                 <p>
-                  Dava ve danışmanlık süreçlerinde düzenli bilgilendirme yaparak müvekkillerimizin sürecin her aşamasından haberdar olmasını sağlıyoruz.
+                  <strong>Sır saklama ve gizlilik</strong>, avukatlık mesleğinin en önemli etik ilkelerinden biridir. <strong>Sakarya</strong>'daki avukatlık ofisimiz, BM Havana Avukatlık Kuralları, AB Avukatlık Meslek Kuralları ve 1136 sayılı Avukatlık Kanunu ile belirlenen gizlilik ve sır saklama ilkesini hassasiyetle uygulamaktadır.
                 </p>
                 <p>
-                  Hukuk alanındaki güncel gelişmeleri yakından takip ediyor, sürekli mesleki eğitim ve gelişim faaliyetlerine katılıyoruz.
+                  <strong>Adapazarı</strong> hukuk ofisimiz, müvekkillerine ait bilgi ve belgeleri mesleki sır kapsamında özel bir şekilde gizli tutmakta, üçüncü kişi veya kurumlarla hiçbir şekilde paylaşmamaktadır. Hukuk ofisimiz, vekâletini aldığı müvekkillerini dava süreci ve yapılan işin aşamaları hakkında sürekli bir bilgi akışıyla bilgilendirmektedir.
+                </p>
+                <p>
+                  Hak arama özgürlüğünün güvencesi olan avukatlık mesleğinin icrasında <strong>bağımsızlık</strong> etkin bir savunma için zorunludur. <strong>Sakarya</strong>'da avukat, mesleğini ifa ederken tüm kişi ve özellikle kamu kurumlarına karşı bağımsız hareket etmelidir. <strong>Sakarya Adapazarı</strong> Avukatlık ofisimiz, bağımsızlık ilkesini mesleki faaliyetin önemli bir unsuru olarak uygulamaktadır.
                 </p>
               </div>
             </motion.div>

@@ -6,9 +6,9 @@ export default function HeroSection() {
     <section className="relative min-h-screen flex items-center bg-cream overflow-hidden">
       {/* Background Image with Blur and Overlay */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <img 
-          src="/images/office-bg.jpg" 
-          alt="Hukuk Bürosu Makam Odası" 
+        <img
+          src="/images/office-bg.jpg"
+          alt="Hukuk Bürosu Makam Odası"
           className="w-full h-full object-cover blur-[2px] scale-105 opacity-80"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-cream/95 via-cream/85 to-cream/60"></div>
@@ -43,7 +43,7 @@ export default function HeroSection() {
               transition={{ duration: 0.8, delay: 0.1 }}
               className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-text-primary leading-tight"
             >
-              Hukuki süreçlerinizde{' '}
+              Sakarya'da hukuki süreçlerinizde{' '}
               <span className="text-navy">güvenilir</span> ve{' '}
               <span className="relative inline-block">
                 <span className="relative z-10">çözüm odaklı</span>
@@ -63,7 +63,7 @@ export default function HeroSection() {
               transition={{ duration: 0.7, delay: 0.3 }}
               className="mt-6 text-lg text-text-secondary leading-relaxed max-w-lg"
             >
-              Ceza, iş, ticaret, aile ve bilişim hukuku alanlarında
+              Sakarya'da ceza, iş, ticaret, aile ve bilişim hukuku alanlarında
               danışmanlık ve dava takibi hizmetleri sunuyoruz.
             </motion.p>
 

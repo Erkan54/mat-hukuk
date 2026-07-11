@@ -22,7 +22,7 @@ export default function Disclaimer() {
               <h3 className="font-serif text-lg font-semibold text-text-primary">Avukat-Müvekkil İlişkisi</h3>
               <p>Web sitesinin kullanılması veya iletişim formlarının doldurulması, avukat-müvekkil ilişkisi oluşturmaz. Bu ilişki, ancak taraflar arasında yazılı bir vekâletname ilişkisinin kurulmasıyla başlar.</p>
               <h3 className="font-serif text-lg font-semibold text-text-primary">Sorumluluk Sınırlaması</h3>
-              <p>Yılmaz & Demir Hukuk Bürosu, web sitesindeki bilgilerin doğruluğu, güncelliği ve eksiksizliği konusunda herhangi bir garanti vermemektedir. Bu bilgilere dayanılarak alınan kararlardan doğabilecek zararlardan sorumluluk kabul edilmez.</p>
+              <p>MAT & ALPGÜL Hukuk Danışmanlık, web sitesindeki bilgilerin doğruluğu, güncelliği ve eksiksizliği konusunda herhangi bir garanti vermemektedir. Bu bilgilere dayanılarak alınan kararlardan doğabilecek zararlardan sorumluluk kabul edilmez.</p>
               <h3 className="font-serif text-lg font-semibold text-text-primary">Dış Bağlantılar</h3>
               <p>Web sitesinde yer alabilecek üçüncü taraf web sitelerine yönlendiren bağlantılardan, ilgili sitelerin içerikleri ve gizlilik uygulamalarından büromuz sorumlu değildir.</p>
               <p className="italic">Son güncelleme: Haziran 2026</p>

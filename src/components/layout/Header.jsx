@@ -45,7 +45,7 @@ export default function Header() {
               <span className={`font-serif text-xl sm:text-2xl font-bold tracking-tight transition-colors duration-300 ${
                 isScrolled || !isHome ? 'text-navy' : 'text-navy'
               }`}>
-                MAT <span className="text-gold">Hukuk</span>
+                MAT & ALPGÜL <span className="text-gold">Hukuk</span>
               </span>
               <span className={`text-[10px] sm:text-xs tracking-[0.3em] uppercase font-medium transition-colors duration-300 ${
                 isScrolled || !isHome ? 'text-text-secondary' : 'text-text-secondary'

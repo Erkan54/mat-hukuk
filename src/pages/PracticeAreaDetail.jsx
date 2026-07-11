@@ -48,7 +48,15 @@ export default function PracticeAreaDetail() {
                     <span className="text-4xl">{area.icon}</span>
                     <h2 className="font-serif text-2xl font-bold text-text-primary">{area.title}</h2>
                   </div>
-                  <p className="text-text-secondary leading-relaxed mb-8">{area.description}</p>
+                  <div className="space-y-6 text-text-secondary leading-relaxed mb-8 text-justify">
+                    <p>{area.description}</p>
+                    {area.criticalInfo && (
+                      <div className="p-6 bg-gold/5 border-l-4 border-gold rounded-r-xl my-6">
+                        <strong className="text-gold-dark block mb-2 font-serif text-base">Kritik Bilgi</strong>
+                        <p className="text-sm text-text-secondary">{area.criticalInfo}</p>
+                      </div>
+                    )}
+                  </div>
 
                   <h3 className="font-serif text-xl font-semibold text-text-primary mb-6">Sunduğumuz Hizmetler</h3>
                   <div className="grid sm:grid-cols-2 gap-4">
@@ -70,7 +78,7 @@ export default function PracticeAreaDetail() {
 
                   <div className="mt-10 p-6 bg-navy/5 rounded-xl">
                     <p className="text-sm text-text-secondary">
-                      <strong className="text-navy">Not:</strong> Bu alandaki hukuki süreçler hakkında detaylı bilgi almak ve durumunuza özel değerlendirme için randevu talep edebilirsiniz.
+                      <strong className="text-navy">Not:</strong> Bu alandaki hukuki süreçler hakkında detaylı bilgi almak ve Sakarya'da durumunuza özel değerlendirme için randevu talep edebilirsiniz.
                     </p>
                     <Link
                       to="/randevu"
