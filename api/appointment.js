@@ -50,6 +50,6 @@ export default async function handler(req, res) {
     return res.status(200).json({ success: true, message: 'Randevu talebi başarıyla alındı.' });
   } catch (error) {
     console.error('Randevu mail gönderme hatası:', error);
-    return res.status(500).json({ error: 'Randevu talebi iletilirken bir sunucu hatası oluştu.' });
+    return res.status(500).json({ error: `Randevu talebi iletilirken hata oluştu: ${error.message}` });
   }
 }

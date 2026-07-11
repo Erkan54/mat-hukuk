@@ -47,6 +47,6 @@ export default async function handler(req, res) {
     return res.status(200).json({ success: true, message: 'Mesaj başarıyla iletildi.' });
   } catch (error) {
     console.error('İletişim mail gönderme hatası:', error);
-    return res.status(500).json({ error: 'Mesaj iletilirken bir sunucu hatası oluştu.' });
+    return res.status(500).json({ error: `Mail gönderilirken hata oluştu: ${error.message}` });
   }
 }
