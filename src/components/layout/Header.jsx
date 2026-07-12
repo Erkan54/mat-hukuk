@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navLinks = [
-  { name: 'Hakkımızda', path: '/hakkimizda' },
+  { name: 'Biz Kimiz', path: '/hakkimizda' },
   { name: 'Hizmet Alanları', path: '/hizmet-alanlari' },
   { name: 'Ekibimiz', path: '/ekibimiz' },
   { name: 'Yayınlar', path: '/yayinlar' },

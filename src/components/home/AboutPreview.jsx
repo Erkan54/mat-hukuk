@@ -38,7 +38,7 @@ export default function AboutPreview() {
           {/* Left */}
           <div>
             <SectionTitle
-              label="Sakarya Avukat - Hakkımızda"
+              label="Sakarya Avukat - Biz Kimiz"
               title="Sakarya'da güvenilir hukuki destek"
               subtitle="Sakarya merkezli büromuz, hukuki uyuşmazlıkların çözümünde şeffaflık, güven ve müvekkil odaklı çalışma anlayışını esas alır. Sakarya Adapazarı'ndaki ofisimizde müvekkillerimize en iyi hizmeti sunmayı hedefliyoruz."
               centered={false}

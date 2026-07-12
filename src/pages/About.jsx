@@ -38,11 +38,15 @@ export default function About() {
   return (
     <main>
       <PageHero
-        title="Hakkımızda"
+        title={
+          <span className="inline-block tracking-wider font-extrabold uppercase text-5xl md:text-6xl lg:text-7xl">
+            BİZ <span className="text-gold">KİMİZ</span>
+          </span>
+        }
         subtitle="Şeffaflık, güven ve müvekkil odaklı çalışma anlayışıyla hukuki süreçlerinizde yanınızdayız."
         breadcrumbs={[
           { label: 'Ana Sayfa', link: '/' },
-          { label: 'Hakkımızda' }
+          { label: 'Biz Kimiz' }
         ]}
       />
 

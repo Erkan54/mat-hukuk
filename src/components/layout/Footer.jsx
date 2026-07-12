@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { siteInfo } from '../../data/siteInfo';
 
 const footerLinks = [
-  { name: 'Hakkımızda', path: '/hakkimizda' },
+  { name: 'Biz Kimiz', path: '/hakkimizda' },
   { name: 'Hizmet Alanları', path: '/hizmet-alanlari' },
   { name: 'Ekibimiz', path: '/ekibimiz' },
   { name: 'Yayınlar', path: '/yayinlar' },
