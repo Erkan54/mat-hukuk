@@ -36,27 +36,56 @@ export default function Appointment() {
     setIsLoading(true);
     setStatus(null);
 
+    // Format date for email
+    const formattedDate = formData.tarih
+      ? new Date(formData.tarih + 'T00:00:00').toLocaleDateString('tr-TR', {
+          weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
+        })
+      : 'Belirtilmedi';
+
+    const timeDisplay = formData.saatAraligi
+      ? `${formData.saatAraligi} - ${(parseInt(formData.saatAraligi.split(':')[0]) + 1).toString().padStart(2, '0')}:00`
+      : 'Belirtilmedi';
+
     try {
-      const response = await fetch('/api/appointment', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: 'af4ada9f-beb9-4a10-8995-cf1ff3236478',
+          subject: `🗓️ Yeni Randevu Talebi: ${formData.name} - ${formattedDate}`,
+          from_name: formData.name,
+          replyto: formData.email,
+          message: [
+            '━━━━ YENİ RANDEVU TALEBİ ━━━━',
+            '',
+            `👤 Müvekkil Adayı: ${formData.name}`,
+            `📞 Telefon: ${formData.phone}`,
+            `📧 E-posta: ${formData.email || 'Belirtilmedi'}`,
+            '',
+            `⚖️ Hukuk Alanı: ${formData.hukukAlani || 'Belirtilmedi'}`,
+            `💼 Görüşme Türü: ${formData.gorusmeTuru}`,
+            `📅 Tercih Edilen Tarih: ${formattedDate}`,
+            `🕐 Saat Aralığı: ${timeDisplay}`,
+            '',
+            `💬 Mesaj:`,
+            formData.mesaj || 'Mesaj girilmedi',
+          ].join('\n'),
+        }),
       });
 
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
+      const data = await response.json();
+
+      if (data.success) {
+        setStatus('success');
+        setFormData({
+          name: '', phone: '', email: '', hukukAlani: '', gorusmeTuru: '',
+          tarih: '', saatAraligi: '', mesaj: '', kvkkOnay: false, iletisimOnay: false
+        });
+        setErrors({});
+      } else {
+        throw new Error(data.message || 'Gönderim başarısız');
       }
-
-      const result = await response.json();
-      
-      setStatus('success');
-      setFormData({
-        name: '', phone: '', email: '', hukukAlani: '', gorusmeTuru: '',
-        tarih: '', saatAraligi: '', mesaj: '', kvkkOnay: false, iletisimOnay: false
-      });
-      setErrors({});
     } catch (error) {
       console.error('Submit error:', error);
       setStatus('error');

@@ -16,20 +16,34 @@ export default function Contact() {
     setStatus(null);
 
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: 'af4ada9f-beb9-4a10-8995-cf1ff3236478',
+          subject: `İletişim Formu: ${formData.subject || 'Yeni Mesaj'} - ${formData.name}`,
+          from_name: formData.name,
+          replyto: formData.email,
+          message: [
+            `Ad Soyad: ${formData.name}`,
+            `E-posta: ${formData.email}`,
+            `Telefon: ${formData.phone || 'Belirtilmedi'}`,
+            `Konu: ${formData.subject || 'Belirtilmedi'}`,
+            '',
+            `Mesaj:`,
+            formData.message,
+          ].join('\n'),
+        }),
       });
 
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
+      const data = await response.json();
 
-      setStatus('success');
-      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+      if (data.success) {
+        setStatus('success');
+        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+      } else {
+        throw new Error(data.message || 'Gönderim başarısız');
+      }
     } catch (error) {
       console.error('Submit error:', error);
       setStatus('error');
