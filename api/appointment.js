@@ -1,4 +1,6 @@
-import nodemailer from 'nodemailer';
+// Web3Forms integration - no SMTP/environment variables needed
+// Replace YOUR_ACCESS_KEY_HERE with the actual key from web3forms.com
+const WEB3FORMS_ACCESS_KEY = 'YOUR_ACCESS_KEY_HERE';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -7,47 +9,51 @@ export default async function handler(req, res) {
 
   const { name, phone, email, hukukAlani, gorusmeTuru, tarih, saatAraligi, mesaj } = req.body;
 
-  // If SMTP environment variables are not configured, simulate success (demo mode)
-  if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
-    console.warn('SMTP configuration is missing. Simulating success for appointment form:', req.body);
-    return res.status(200).json({ 
-      success: true, 
-      message: 'Randevu talebi simüle edildi. SMTP ayarları yapılınca mail olarak iletilecektir.' 
-    });
-  }
+  // Format date for display
+  const formattedDate = tarih
+    ? new Date(tarih + 'T00:00:00').toLocaleDateString('tr-TR', {
+        weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
+      })
+    : 'Belirtilmedi';
 
   try {
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST || 'smtp.gmail.com',
-      port: parseInt(process.env.SMTP_PORT || '465'),
-      secure: process.env.SMTP_SECURE !== 'false', // true for 465, false for 587
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
+    const response = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject: `🗓️ Yeni Randevu Talebi: ${name} - ${formattedDate}`,
+        from_name: name,
+        replyto: email,
+        message: `
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+YENİ RANDEVU TALEBİ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+👤 Müvekkil Adayı : ${name}
+📞 Telefon         : ${phone}
+📧 E-posta         : ${email || 'Belirtilmedi'}
+
+⚖️  Hukuk Alanı    : ${hukukAlani || 'Belirtilmedi'}
+💼 Görüşme Türü   : ${gorusmeTuru}
+📅 Tercih Edilen   : ${formattedDate}
+🕐 Saat Aralığı   : ${saatAraligi ? `${saatAraligi} - ${(parseInt(saatAraligi.split(':')[0]) + 1).toString().padStart(2, '0')}:00` : 'Belirtilmedi'}
+
+💬 Mesaj:
+${mesaj || 'Mesaj girilmedi'}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        `.trim(),
+      }),
     });
 
-    const mailOptions = {
-      from: `"${name}" <${process.env.SMTP_USER}>`,
-      replyTo: email,
-      to: process.env.RECEIVER_EMAILS || 'ahmetnurullaherkan@gmail.com',
-      subject: `Yeni Randevu Talebi: ${name}`,
-      html: `
-        <h3>Yeni Randevu Talebi Detayları</h3>
-        <p><strong>Müvekkil Adayı:</strong> ${name}</p>
-        <p><strong>Telefon:</strong> ${phone}</p>
-        <p><strong>E-posta:</strong> ${email || 'Belirtilmedi'}</p>
-        <p><strong>Hukuk Alanı:</strong> ${hukukAlani || 'Belirtilmedi'}</p>
-        <p><strong>Görüşme Türü:</strong> ${gorusmeTuru}</p>
-        <p><strong>Tarih:</strong> ${tarih}</p>
-        <p><strong>Saat Aralığı:</strong> ${saatAraligi}</p>
-        <p><strong>Mesaj:</strong></p>
-        <p>${mesaj || 'Mesaj yok'}</p>
-      `,
-    };
+    const data = await response.json();
 
-    await transporter.sendMail(mailOptions);
-    return res.status(200).json({ success: true, message: 'Randevu talebi başarıyla alındı.' });
+    if (data.success) {
+      return res.status(200).json({ success: true, message: 'Randevu talebi başarıyla alındı.' });
+    } else {
+      throw new Error(data.message || 'Web3Forms hatası');
+    }
   } catch (error) {
     console.error('Randevu mail gönderme hatası:', error);
     return res.status(500).json({ error: `Randevu talebi iletilirken hata oluştu: ${error.message}` });

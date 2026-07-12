@@ -1,4 +1,6 @@
-import nodemailer from 'nodemailer';
+// Web3Forms integration - no SMTP/environment variables needed
+// Replace YOUR_ACCESS_KEY_HERE with the actual key from web3forms.com
+const WEB3FORMS_ACCESS_KEY = 'YOUR_ACCESS_KEY_HERE';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -7,44 +9,34 @@ export default async function handler(req, res) {
 
   const { name, email, phone, subject, message } = req.body;
 
-  // If SMTP environment variables are not configured, simulate success (demo mode)
-  if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
-    console.warn('SMTP configuration is missing. Simulating success for contact form:', req.body);
-    return res.status(200).json({ 
-      success: true, 
-      message: 'Mesaj simüle edildi. SMTP ayarları yapılınca mail olarak iletilecektir.' 
-    });
-  }
-
   try {
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST || 'smtp.gmail.com',
-      port: parseInt(process.env.SMTP_PORT || '465'),
-      secure: process.env.SMTP_SECURE !== 'false', // true for 465, false for 587
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
+    const response = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject: `İletişim Formu: ${subject || 'Yeni Mesaj'} - ${name}`,
+        from_name: name,
+        replyto: email,
+        message: `
+Ad Soyad: ${name}
+E-posta: ${email}
+Telefon: ${phone || 'Belirtilmedi'}
+Konu: ${subject || 'Belirtilmedi'}
+
+Mesaj:
+${message}
+        `.trim(),
+      }),
     });
 
-    const mailOptions = {
-      from: `"${name}" <${process.env.SMTP_USER}>`,
-      replyTo: email,
-      to: process.env.RECEIVER_EMAILS || 'ahmetnurullaherkan@gmail.com',
-      subject: `İletişim Formu: ${subject || 'Yeni Mesaj'}`,
-      html: `
-        <h3>Yeni İletişim Formu Mesajı</h3>
-        <p><strong>Gönderen:</strong> ${name}</p>
-        <p><strong>E-posta:</strong> ${email}</p>
-        <p><strong>Telefon:</strong> ${phone || 'Belirtilmedi'}</p>
-        <p><strong>Konu:</strong> ${subject || 'Belirtilmedi'}</p>
-        <p><strong>Mesaj:</strong></p>
-        <p>${message}</p>
-      `,
-    };
+    const data = await response.json();
 
-    await transporter.sendMail(mailOptions);
-    return res.status(200).json({ success: true, message: 'Mesaj başarıyla iletildi.' });
+    if (data.success) {
+      return res.status(200).json({ success: true, message: 'Mesaj başarıyla iletildi.' });
+    } else {
+      throw new Error(data.message || 'Web3Forms hatası');
+    }
   } catch (error) {
     console.error('İletişim mail gönderme hatası:', error);
     return res.status(500).json({ error: `Mail gönderilirken hata oluştu: ${error.message}` });
