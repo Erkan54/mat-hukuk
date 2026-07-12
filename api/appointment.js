@@ -1,6 +1,5 @@
 // Web3Forms integration - no SMTP/environment variables needed
-// Replace YOUR_ACCESS_KEY_HERE with the actual key from web3forms.com
-const WEB3FORMS_ACCESS_KEY = 'YOUR_ACCESS_KEY_HERE';
+const WEB3FORMS_ACCESS_KEY = 'af4ada9f-beb9-4a10-8995-cf1ff3236478';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
