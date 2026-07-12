@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import SectionTitle from '../common/SectionTitle';
 
 const principles = [
   {
@@ -37,12 +36,22 @@ export default function AboutPreview() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left */}
           <div>
-            <SectionTitle
-              label="Sakarya Avukat - Biz Kimiz"
-              title="Sakarya'da güvenilir hukuki destek"
-              subtitle="Sakarya merkezli büromuz, hukuki uyuşmazlıkların çözümünde şeffaflık, güven ve müvekkil odaklı çalışma anlayışını esas alır. Sakarya Adapazarı'ndaki ofisimizde müvekkillerimize en iyi hizmeti sunmayı hedefliyoruz."
-              centered={false}
-            />
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
+              <h2 className="font-serif text-6xl sm:text-7xl font-bold text-text-primary leading-none tracking-tight">
+                Biz
+              </h2>
+              <div className="flex items-center gap-4 mt-1">
+                <h2 className="font-serif text-6xl sm:text-7xl font-bold text-navy leading-none tracking-tight italic">
+                  Kimiz?
+                </h2>
+                <div className="h-1.5 w-16 bg-gradient-to-r from-gold to-gold-light rounded-full mt-2" />
+              </div>
+            </motion.div>
             
             <motion.div
               initial={{ opacity: 0, y: 20 }}
