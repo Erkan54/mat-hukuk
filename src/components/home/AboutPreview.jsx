@@ -42,15 +42,18 @@ export default function AboutPreview() {
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
             >
-              <h2 className="font-serif text-6xl sm:text-7xl font-bold text-text-primary leading-none tracking-tight">
-                Biz
-              </h2>
-              <div className="flex items-center gap-4 mt-1">
+              <div className="flex items-end gap-4 flex-wrap">
+                <h2 className="font-serif text-6xl sm:text-7xl font-bold text-text-primary leading-none tracking-tight">
+                  Biz
+                </h2>
                 <h2 className="font-serif text-6xl sm:text-7xl font-bold text-navy leading-none tracking-tight italic">
                   Kimiz?
                 </h2>
-                <div className="h-1.5 w-16 bg-gradient-to-r from-gold to-gold-light rounded-full mt-2" />
+                <div className="h-1.5 w-16 bg-gradient-to-r from-gold to-gold-light rounded-full mb-2" />
               </div>
+              <p className="mt-4 text-base text-text-secondary leading-relaxed">
+                Sakarya'da güvenilir hukuki destek
+              </p>
             </motion.div>
             
             <motion.div
