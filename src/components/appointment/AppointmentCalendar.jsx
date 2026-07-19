@@ -40,6 +40,13 @@ const isHoliday = (dateStr) => {
   return false;
 };
 
+const formatDateLocal = (date) => {
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, '0');
+  const d = String(date.getDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
+};
+
 export default function AppointmentCalendar({ selectedDate, selectedTime, onDateSelect, onTimeSelect, dateError, timeError }) {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
@@ -63,7 +70,7 @@ export default function AppointmentCalendar({ selectedDate, selectedTime, onDate
     // Current month days
     for (let d = 1; d <= lastDay.getDate(); d++) {
       const date = new Date(currentYear, currentMonth, d);
-      const dateStr = date.toISOString().split('T')[0];
+      const dateStr = formatDateLocal(date);
       const dayOfWeek = date.getDay();
       const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
       const isPast = date < today;
@@ -172,7 +179,7 @@ export default function AppointmentCalendar({ selectedDate, selectedTime, onDate
           >
             {calendarDays.map((day, i) => {
               const isSelected = day.date === selectedDate;
-              const isToday = day.currentMonth && day.date === today.toISOString().split('T')[0];
+              const isToday = day.currentMonth && day.date === formatDateLocal(today);
               const isDisabled = !day.currentMonth || day.isPast || day.isWeekend || day.isHoliday;
 
               return (
