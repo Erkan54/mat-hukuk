@@ -11,35 +11,34 @@ const TIME_SLOTS = [
   '09:00', '10:00', '11:00', '13:00', '14:00', '15:00', '16:00'
 ];
 
-// Simulated busy slots — in production these would come from an API/database
-// Format: { 'YYYY-MM-DD': ['09:00', '10:00', ...] }
-const generateBusySlots = () => {
-  const busy = {};
-  const today = new Date();
-  // Generate some realistic busy patterns for the next 60 days
-  for (let i = 1; i <= 60; i++) {
-    const d = new Date(today);
-    d.setDate(d.getDate() + i);
-    const dayOfWeek = d.getDay();
-    // Skip weekends
-    if (dayOfWeek === 0 || dayOfWeek === 6) continue;
-    const key = d.toISOString().split('T')[0];
-    // Randomly make some slots busy (seed based on date for consistency)
-    const seed = d.getDate() * (d.getMonth() + 1);
-    const busyForDay = [];
-    TIME_SLOTS.forEach((slot, idx) => {
-      if ((seed + idx * 7) % 3 === 0) {
-        busyForDay.push(slot);
-      }
-    });
-    if (busyForDay.length > 0) {
-      busy[key] = busyForDay;
-    }
-  }
-  return busy;
-};
+// Türkiye Resmi Tatillerini ve dini bayramları (yaklaşık) kontrol eden yardımcı fonksiyon
+const isHoliday = (dateStr) => {
+  if (!dateStr) return false;
+  const [yearStr, monthStr, dayStr] = dateStr.split('-');
+  const month = parseInt(monthStr, 10);
+  const day = parseInt(dayStr, 10);
+  const year = parseInt(yearStr, 10);
 
-const BUSY_SLOTS = generateBusySlots();
+  // Sabit Resmi Tatiller
+  if (month === 1 && day === 1) return true; // Yılbaşı
+  if (month === 4 && day === 23) return true; // 23 Nisan
+  if (month === 5 && day === 1) return true; // 1 Mayıs
+  if (month === 5 && day === 19) return true; // 19 Mayıs
+  if (month === 7 && day === 15) return true; // 15 Temmuz
+  if (month === 8 && day === 30) return true; // 30 Ağustos
+  if (month === 10 && day === 29) return true; // 29 Ekim
+
+  // Dini ve Değişken Bayramlar (Yaklaşık tarihler)
+  if (year === 2026) {
+    if (month === 3 && (day >= 18 && day <= 21)) return true; // Ramazan Bayramı
+    if (month === 5 && (day >= 26 && day <= 30)) return true; // Kurban Bayramı
+  } else if (year === 2027) {
+    if (month === 3 && (day >= 8 && day <= 11)) return true; // Ramazan Bayramı
+    if (month === 5 && (day >= 15 && day <= 19)) return true; // Kurban Bayramı
+  }
+
+  return false;
+};
 
 export default function AppointmentCalendar({ selectedDate, selectedTime, onDateSelect, onTimeSelect, dateError, timeError }) {
   const today = new Date();
@@ -68,9 +67,7 @@ export default function AppointmentCalendar({ selectedDate, selectedTime, onDate
       const dayOfWeek = date.getDay();
       const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
       const isPast = date < today;
-      const busySlots = BUSY_SLOTS[dateStr] || [];
-      const availableCount = isWeekend || isPast ? 0 : TIME_SLOTS.length - busySlots.length;
-      const isFullyBooked = !isWeekend && !isPast && availableCount === 0;
+      const holiday = isHoliday(dateStr);
 
       days.push({
         day: d,
@@ -78,9 +75,7 @@ export default function AppointmentCalendar({ selectedDate, selectedTime, onDate
         date: dateStr,
         isWeekend,
         isPast,
-        isFullyBooked,
-        availableCount,
-        busySlots
+        isHoliday: holiday
       });
     }
 
@@ -116,23 +111,11 @@ export default function AppointmentCalendar({ selectedDate, selectedTime, onDate
   const canGoPrev = !(currentMonth === today.getMonth() && currentYear === today.getFullYear());
 
   const handleDayClick = (day) => {
-    if (!day.currentMonth || day.isPast || day.isWeekend || day.isFullyBooked) return;
+    if (!day.currentMonth || day.isPast || day.isWeekend || day.isHoliday) return;
     onDateSelect(day.date);
-    // Clear time if it's busy on the new date
-    if (selectedTime && day.busySlots.includes(selectedTime)) {
-      onTimeSelect('');
-    }
   };
 
-  const selectedDateBusySlots = selectedDate ? (BUSY_SLOTS[selectedDate] || []) : [];
-
-  // Determine status color dot for calendar days
-  const getStatusIndicator = (day) => {
-    if (!day.currentMonth || day.isPast || day.isWeekend) return null;
-    if (day.isFullyBooked) return 'bg-error/60';
-    if (day.availableCount <= 2) return 'bg-gold';
-    return 'bg-success/70';
-  };
+  const selectedDateBusySlots = [];
 
   return (
     <div className="space-y-6">
@@ -190,8 +173,7 @@ export default function AppointmentCalendar({ selectedDate, selectedTime, onDate
             {calendarDays.map((day, i) => {
               const isSelected = day.date === selectedDate;
               const isToday = day.currentMonth && day.date === today.toISOString().split('T')[0];
-              const isDisabled = !day.currentMonth || day.isPast || day.isWeekend || day.isFullyBooked;
-              const statusColor = getStatusIndicator(day);
+              const isDisabled = !day.currentMonth || day.isPast || day.isWeekend || day.isHoliday;
 
               return (
                 <button
@@ -204,9 +186,9 @@ export default function AppointmentCalendar({ selectedDate, selectedTime, onDate
                     transition-all duration-200 border-b border-r border-border/10
                     ${!day.currentMonth ? 'text-text-secondary/20' : ''}
                     ${day.currentMonth && !isDisabled && !isSelected ? 'hover:bg-navy/5 cursor-pointer' : ''}
-                    ${day.isPast && day.currentMonth ? 'text-text-secondary/30' : ''}
-                    ${day.isWeekend && day.currentMonth && !day.isPast ? 'text-text-secondary/30' : ''}
-                    ${day.isFullyBooked ? 'text-error/40 line-through' : ''}
+                    ${day.isPast && day.currentMonth ? 'text-text-secondary/30 bg-cream-dark/10' : ''}
+                    ${day.isWeekend && day.currentMonth && !day.isPast ? 'text-text-secondary/30 bg-cream-dark/20' : ''}
+                    ${day.isHoliday && day.currentMonth && !day.isPast ? 'text-text-secondary/30 bg-cream-dark/30' : ''}
                     ${isSelected ? 'bg-navy text-white font-bold shadow-lg shadow-navy/20 scale-[0.92] rounded-xl z-10' : ''}
                     ${isToday && !isSelected ? 'font-bold text-navy' : ''}
                     ${day.currentMonth && !isDisabled && !isSelected ? 'text-text-primary font-medium' : ''}
@@ -218,9 +200,6 @@ export default function AppointmentCalendar({ selectedDate, selectedTime, onDate
                       <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-navy rounded-full" />
                     )}
                   </span>
-                  {statusColor && !isSelected && (
-                    <span className={`absolute bottom-1.5 w-1.5 h-1.5 rounded-full ${statusColor}`} />
-                  )}
                   {isSelected && (
                     <motion.span
                       layoutId="selected-day"
@@ -233,22 +212,6 @@ export default function AppointmentCalendar({ selectedDate, selectedTime, onDate
             })}
           </motion.div>
         </AnimatePresence>
-
-        {/* Legend */}
-        <div className="flex items-center justify-center gap-5 py-3 bg-cream/50 border-t border-border/20">
-          <div className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-success/70" />
-            <span className="text-[10px] text-text-secondary">Müsait</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-gold" />
-            <span className="text-[10px] text-text-secondary">Az Yer</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-error/60" />
-            <span className="text-[10px] text-text-secondary">Dolu</span>
-          </div>
-        </div>
       </div>
 
       {dateError && <p className="text-xs text-error -mt-4">{dateError}</p>}

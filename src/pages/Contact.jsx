@@ -168,7 +168,7 @@ export default function Contact() {
                       type="text"
                       required
                       value={formData.name}
-                      onChange={(e) => setFormData({...formData, name: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       className="w-full px-4 py-3 bg-cream border border-border rounded-xl text-text-primary placeholder:text-text-secondary/50"
                       placeholder="Adınız ve soyadınız"
                     />
@@ -181,7 +181,7 @@ export default function Contact() {
                         type="email"
                         required
                         value={formData.email}
-                        onChange={(e) => setFormData({...formData, email: e.target.value})}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         className="w-full px-4 py-3 bg-cream border border-border rounded-xl text-text-primary placeholder:text-text-secondary/50"
                         placeholder="E-posta adresiniz"
                       />
@@ -191,7 +191,7 @@ export default function Contact() {
                       <input
                         type="tel"
                         value={formData.phone}
-                        onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         className="w-full px-4 py-3 bg-cream border border-border rounded-xl text-text-primary placeholder:text-text-secondary/50"
                         placeholder="05xx xxx xx xx"
                       />
@@ -204,7 +204,7 @@ export default function Contact() {
                       type="text"
                       required
                       value={formData.subject}
-                      onChange={(e) => setFormData({...formData, subject: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                       className="w-full px-4 py-3 bg-cream border border-border rounded-xl text-text-primary placeholder:text-text-secondary/50"
                       placeholder="Mesaj konusu"
                     />
@@ -216,7 +216,7 @@ export default function Contact() {
                       required
                       rows={5}
                       value={formData.message}
-                      onChange={(e) => setFormData({...formData, message: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       className="w-full px-4 py-3 bg-cream border border-border rounded-xl text-text-primary placeholder:text-text-secondary/50 resize-none"
                       placeholder="Mesajınızı buraya yazınız..."
                     />
@@ -225,9 +225,8 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className={`w-full py-3.5 text-white font-semibold rounded-xl transition-all duration-300 ${
-                      isLoading ? 'bg-navy/70 cursor-not-allowed' : 'bg-navy hover:bg-navy-dark hover:shadow-lg'
-                    }`}
+                    className={`w-full py-3.5 text-white font-semibold rounded-xl transition-all duration-300 ${isLoading ? 'bg-navy/70 cursor-not-allowed' : 'bg-navy hover:bg-navy-dark hover:shadow-lg'
+                      }`}
                   >
                     {isLoading ? 'Gönderiliyor...' : 'Gönder'}
                   </button>
