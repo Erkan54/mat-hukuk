@@ -15,10 +15,7 @@ const mobileItem = {
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
 };
 
-const mobileItemScale = {
-  hidden: { opacity: 0, scale: 0.8 },
-  show: { opacity: 1, scale: 1, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
-};
+
 
 export default function HeroSection() {
   return (
@@ -52,30 +49,7 @@ export default function HeroSection() {
           animate="show"
           className="max-w-lg mx-auto"
         >
-          {/* Animated terazi icon for mobile */}
-          <motion.div variants={mobileItemScale} className="flex justify-center mb-8">
-            <div className="relative">
-              <motion.div
-                animate={{ rotate: [0, 3, -3, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-                className="w-20 h-20 rounded-2xl bg-gradient-to-br from-navy to-navy-dark flex items-center justify-center shadow-xl shadow-navy/20"
-              >
-                <span className="text-4xl">⚖</span>
-              </motion.div>
-              {/* Pulsing ring */}
-              <motion.div
-                animate={{ scale: [1, 1.4, 1], opacity: [0.4, 0, 0.4] }}
-                transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute inset-0 rounded-2xl border-2 border-gold/40"
-              />
-              {/* Second ring */}
-              <motion.div
-                animate={{ scale: [1, 1.7, 1], opacity: [0.2, 0, 0.2] }}
-                transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut', delay: 0.4 }}
-                className="absolute inset-0 rounded-2xl border border-gold/20"
-              />
-            </div>
-          </motion.div>
+
 
           {/* Badge */}
           <motion.div variants={mobileItem} className="flex justify-center mb-6">
