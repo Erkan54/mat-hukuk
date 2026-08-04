@@ -20,7 +20,7 @@ export const team = [
     name: 'Av. Mehmet Akif Trabzon',
     title: 'Kurucu Ortak',
     role: 'founder',
-    image: '/images/lawyer2.jpg',
+    image: '/images/lawyer2.png',
     shortBio: 'Özgeçmiş bilgileri güncellenmektedir.',
     expertise: ['Aile Hukuku', 'Gayrimenkul Hukuku', 'Bilişim / KVKK Hukuku', 'İcra ve İflas Hukuku'],
     education: [
