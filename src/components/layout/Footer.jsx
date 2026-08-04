@@ -114,7 +114,7 @@ export default function Footer() {
                 © {new Date().getFullYear()} {siteInfo.name}. Tüm hakları saklıdır.
               </p>
               <p className="text-white/30 text-xs mt-1">
-                Ahmet Nurullah Erkan tarafından dizayn edilmiştir. İletişim: ahmetnurullaherkan@gmail.com
+                Ahmet Nurullah Erkan tarafından dizayn edilmiştir.
               </p>
             </div>
             <p className="text-white/30 text-xs">
