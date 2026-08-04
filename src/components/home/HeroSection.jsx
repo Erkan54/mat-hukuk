@@ -42,7 +42,7 @@ export default function HeroSection() {
       </div>
 
       {/* ===== MOBILE HERO ===== */}
-      <div className="relative z-10 lg:hidden w-full px-4 sm:px-6 py-28 sm:py-32">
+      <div className="relative z-10 lg:hidden w-full px-4 sm:px-6 pt-20 pb-16 sm:pt-24 sm:pb-20">
         <motion.div
           variants={mobileContainer}
           initial="hidden"
