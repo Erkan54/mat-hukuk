@@ -283,18 +283,25 @@ export default function HeroSection() {
 
       {/* Scroll indicator */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.5, duration: 0.6 }}
+        className="absolute bottom-5 sm:bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5 cursor-pointer group"
+        onClick={() => window.scrollTo({ top: window.innerHeight * 0.85, behavior: 'smooth' })}
       >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="w-6 h-10 border-2 border-navy/20 rounded-full flex justify-center pt-2"
+        <span className="text-[11px] sm:text-xs font-medium tracking-[0.25em] uppercase text-text-secondary/80 group-hover:text-navy transition-colors">
+          AŞAĞI KAYDIR
+        </span>
+        <motion.svg
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+          className="w-4 h-4 text-navy/70 group-hover:text-navy transition-colors"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
         >
-          <motion.div className="w-1 h-2 bg-gold rounded-full" />
-        </motion.div>
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </motion.svg>
       </motion.div>
     </section>
   );
