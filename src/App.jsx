@@ -1,7 +1,9 @@
+import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
 import ScrollToTop from './components/common/ScrollToTop'
+import LoadingScreen from './components/common/LoadingScreen'
 import Home from './pages/Home'
 import About from './pages/About'
 import Team from './pages/Team'
@@ -20,8 +22,11 @@ import Disclaimer from './pages/Disclaimer'
 import NotFound from './pages/NotFound'
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true)
+
   return (
     <>
+      {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
       <ScrollToTop />
       <Header />
       <Routes>

@@ -1,0 +1,240 @@
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect } from 'react';
+
+export default function LoadingScreen({ onComplete }) {
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVisible(false);
+      setTimeout(() => onComplete?.(), 600);
+    }, 2800);
+    return () => clearTimeout(timer);
+  }, [onComplete]);
+
+  return (
+    <AnimatePresence>
+      {isVisible && (
+        <motion.div
+          initial={{ opacity: 1 }}
+          exit={{ opacity: 0, y: -30 }}
+          transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
+          className="fixed inset-0 z-[9999] flex items-center justify-center"
+          style={{ background: 'linear-gradient(135deg, #1E3A4C 0%, #2F5266 50%, #1E3A4C 100%)' }}
+        >
+          {/* Ambient particles */}
+          {[...Array(12)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute rounded-full"
+              style={{
+                width: Math.random() * 4 + 2,
+                height: Math.random() * 4 + 2,
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                background: `rgba(200, 169, 106, ${Math.random() * 0.3 + 0.1})`,
+              }}
+              animate={{
+                y: [0, -30, 0],
+                opacity: [0, 0.6, 0],
+                scale: [0.5, 1, 0.5],
+              }}
+              transition={{
+                duration: Math.random() * 2 + 2,
+                repeat: Infinity,
+                delay: Math.random() * 2,
+                ease: 'easeInOut',
+              }}
+            />
+          ))}
+
+          <div className="relative flex flex-col items-center">
+            {/* Scale / Terazi SVG with liquid fill */}
+            <div className="relative w-32 h-32 sm:w-40 sm:h-40">
+              <svg
+                viewBox="0 0 120 120"
+                className="w-full h-full"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <defs>
+                  {/* Liquid fill clip - animates from top to bottom */}
+                  <clipPath id="liquidFill">
+                    <motion.rect
+                      x="0"
+                      width="120"
+                      height="120"
+                      initial={{ y: 120 }}
+                      animate={{ y: 0 }}
+                      transition={{
+                        duration: 2.2,
+                        ease: [0.22, 1, 0.36, 1],
+                        delay: 0.3,
+                      }}
+                    />
+                  </clipPath>
+
+                  {/* Water wave effect on fill edge */}
+                  <clipPath id="waveClip">
+                    <motion.path
+                      initial={{ d: 'M0,120 L120,120 L120,120 Q90,120 60,120 Q30,120 0,120 Z' }}
+                      animate={{
+                        d: [
+                          'M0,120 L120,120 L120,120 Q90,120 60,120 Q30,120 0,120 Z',
+                          'M0,120 L120,120 L120,20 Q90,10 60,20 Q30,30 0,20 Z',
+                          'M0,120 L120,120 L120,5 Q90,0 60,5 Q30,10 0,5 Z',
+                          'M0,120 L120,120 L120,0 Q90,0 60,0 Q30,0 0,0 Z',
+                        ],
+                      }}
+                      transition={{
+                        duration: 2.2,
+                        ease: [0.22, 1, 0.36, 1],
+                        delay: 0.3,
+                      }}
+                    />
+                  </clipPath>
+
+                  {/* Gold gradient for filled state */}
+                  <linearGradient id="goldGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#D4BC8A" />
+                    <stop offset="50%" stopColor="#C8A96A" />
+                    <stop offset="100%" stopColor="#B08D4A" />
+                  </linearGradient>
+
+                  {/* Shimmer effect */}
+                  <linearGradient id="shimmer" x1="0" y1="0" x2="1" y2="1">
+                    <motion.stop
+                      offset="0%"
+                      stopColor="rgba(255,255,255,0)"
+                      animate={{ stopColor: ['rgba(255,255,255,0)', 'rgba(255,255,255,0.3)', 'rgba(255,255,255,0)'] }}
+                      transition={{ duration: 2, repeat: Infinity, delay: 2 }}
+                    />
+                    <motion.stop
+                      offset="50%"
+                      stopColor="rgba(255,255,255,0.2)"
+                      animate={{ stopColor: ['rgba(255,255,255,0.2)', 'rgba(255,255,255,0.5)', 'rgba(255,255,255,0.2)'] }}
+                      transition={{ duration: 2, repeat: Infinity, delay: 2 }}
+                    />
+                    <motion.stop
+                      offset="100%"
+                      stopColor="rgba(255,255,255,0)"
+                      animate={{ stopColor: ['rgba(255,255,255,0)', 'rgba(255,255,255,0.3)', 'rgba(255,255,255,0)'] }}
+                      transition={{ duration: 2, repeat: Infinity, delay: 2 }}
+                    />
+                  </linearGradient>
+                </defs>
+
+                {/* Outline version (always visible, faded) */}
+                <g opacity="0.15">
+                  {/* Pillar */}
+                  <rect x="57" y="30" width="6" height="65" rx="3" fill="white" />
+                  {/* Base */}
+                  <rect x="35" y="90" width="50" height="6" rx="3" fill="white" />
+                  {/* Top beam */}
+                  <rect x="15" y="27" width="90" height="6" rx="3" fill="white" />
+                  {/* Fulcrum triangle */}
+                  <polygon points="60,15 52,27 68,27" fill="white" />
+                  {/* Left pan strings */}
+                  <line x1="25" y1="33" x2="20" y2="58" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                  <line x1="25" y1="33" x2="38" y2="58" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                  {/* Left pan */}
+                  <path d="M14,58 Q14,68 29,68 Q44,68 44,58 Z" fill="white" />
+                  {/* Right pan strings */}
+                  <line x1="95" y1="33" x2="82" y2="58" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                  <line x1="95" y1="33" x2="100" y2="58" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                  {/* Right pan */}
+                  <path d="M76,58 Q76,68 91,68 Q106,68 106,58 Z" fill="white" />
+                </g>
+
+                {/* Filled version (clips with liquid animation) */}
+                <g clipPath="url(#waveClip)">
+                  {/* Pillar */}
+                  <rect x="57" y="30" width="6" height="65" rx="3" fill="url(#goldGrad)" />
+                  {/* Base */}
+                  <rect x="35" y="90" width="50" height="6" rx="3" fill="url(#goldGrad)" />
+                  {/* Top beam */}
+                  <rect x="15" y="27" width="90" height="6" rx="3" fill="url(#goldGrad)" />
+                  {/* Fulcrum triangle */}
+                  <polygon points="60,15 52,27 68,27" fill="url(#goldGrad)" />
+                  {/* Left pan strings */}
+                  <line x1="25" y1="33" x2="20" y2="58" stroke="#C8A96A" strokeWidth="2.5" strokeLinecap="round" />
+                  <line x1="25" y1="33" x2="38" y2="58" stroke="#C8A96A" strokeWidth="2.5" strokeLinecap="round" />
+                  {/* Left pan */}
+                  <path d="M14,58 Q14,68 29,68 Q44,68 44,58 Z" fill="url(#goldGrad)" />
+                  {/* Right pan strings */}
+                  <line x1="95" y1="33" x2="82" y2="58" stroke="#C8A96A" strokeWidth="2.5" strokeLinecap="round" />
+                  <line x1="95" y1="33" x2="100" y2="58" stroke="#C8A96A" strokeWidth="2.5" strokeLinecap="round" />
+                  {/* Right pan */}
+                  <path d="M76,58 Q76,68 91,68 Q106,68 106,58 Z" fill="url(#goldGrad)" />
+
+                  {/* Shimmer overlay */}
+                  <rect x="0" y="0" width="120" height="120" fill="url(#shimmer)" opacity="0.5" />
+                </g>
+              </svg>
+
+              {/* Glow ring behind the icon */}
+              <motion.div
+                className="absolute inset-0 rounded-full"
+                style={{
+                  background: 'radial-gradient(circle, rgba(200,169,106,0.15) 0%, transparent 70%)',
+                }}
+                animate={{ scale: [1, 1.3, 1], opacity: [0.5, 0.8, 0.5] }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
+              />
+
+              {/* Drip particles falling from top */}
+              {[...Array(5)].map((_, i) => (
+                <motion.div
+                  key={`drip-${i}`}
+                  className="absolute rounded-full bg-gold/60"
+                  style={{
+                    width: 3,
+                    height: 8,
+                    left: `${30 + i * 10}%`,
+                    top: -10,
+                    borderRadius: '50% 50% 50% 50% / 30% 30% 70% 70%',
+                  }}
+                  animate={{
+                    y: [0, 160],
+                    opacity: [0.8, 0],
+                    scaleY: [1, 0.3],
+                  }}
+                  transition={{
+                    duration: 1.2,
+                    delay: 0.2 + i * 0.15,
+                    ease: 'easeIn',
+                  }}
+                />
+              ))}
+            </div>
+
+            {/* Brand Text */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.4, ease: 'easeOut' }}
+              className="mt-8 text-center"
+            >
+              <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white tracking-wide">
+                MAT & ALPGÜL
+              </h2>
+              <motion.div
+                initial={{ width: 0 }}
+                animate={{ width: 80 }}
+                transition={{ duration: 0.8, delay: 1.8, ease: [0.22, 1, 0.36, 1] }}
+                className="h-0.5 bg-gradient-to-r from-gold to-gold-light mx-auto mt-3 rounded-full"
+              />
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.6 }}
+                transition={{ delay: 2.0 }}
+                className="text-white/60 text-xs tracking-[0.35em] uppercase mt-3 font-medium"
+              >
+                Hukuk Danışmanlık
+              </motion.p>
+            </motion.div>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
