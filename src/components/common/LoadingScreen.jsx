@@ -8,7 +8,7 @@ export default function LoadingScreen({ onComplete }) {
     const timer = setTimeout(() => {
       setIsVisible(false);
       setTimeout(() => onComplete?.(), 600);
-    }, 2800);
+    }, 4400);
     return () => clearTimeout(timer);
   }, [onComplete]);
 
@@ -82,7 +82,7 @@ export default function LoadingScreen({ onComplete }) {
                       initial={{ y: 120 }}
                       animate={{ y: 0 }}
                       transition={{
-                        duration: 2.2,
+                        duration: 3.6,
                         ease: [0.22, 1, 0.36, 1],
                         delay: 0.3,
                       }}
@@ -102,7 +102,7 @@ export default function LoadingScreen({ onComplete }) {
                         ],
                       }}
                       transition={{
-                        duration: 2.2,
+                        duration: 3.6,
                         ease: [0.22, 1, 0.36, 1],
                         delay: 0.3,
                       }}
