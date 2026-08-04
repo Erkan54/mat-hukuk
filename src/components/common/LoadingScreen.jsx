@@ -80,42 +80,22 @@ export default function LoadingScreen({ onComplete }) {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <defs>
-                  {/* Liquid fill clip - animates from top to bottom */}
+                  {/* Liquid fill clip - animates 40% -> 70% -> 90% -> 100% */}
                   <clipPath id="liquidFill">
                     <motion.rect
                       x="0"
                       width="120"
                       height="120"
                       initial={{ y: 120 }}
-                      animate={{ y: 0 }}
+                      animate={{ y: [120, 72, 36, 12, 0] }}
                       transition={{
-                        duration: 1.6,
-                        ease: [0.22, 1, 0.36, 1],
+                        duration: 1.7,
+                        times: [0, 0.3, 0.55, 0.8, 1],
+                        ease: ['easeInOut', 'easeInOut', 'easeInOut', 'easeOut'],
                         delay: 0.1,
                       }}
                     />
                   </clipPath>
-
-                  {/* Water wave effect on fill edge */}
-                  <clipPath id="waveClip">
-                    <motion.path
-                      initial={{ d: 'M0,120 L120,120 L120,120 Q90,120 60,120 Q30,120 0,120 Z' }}
-                      animate={{
-                        d: [
-                          'M0,120 L120,120 L120,120 Q90,120 60,120 Q30,120 0,120 Z',
-                          'M0,120 L120,120 L120,20 Q90,10 60,20 Q30,30 0,20 Z',
-                          'M0,120 L120,120 L120,5 Q90,0 60,5 Q30,10 0,5 Z',
-                          'M0,120 L120,120 L120,0 Q90,0 60,0 Q30,0 0,0 Z',
-                        ],
-                      }}
-                      transition={{
-                        duration: 1.6,
-                        ease: [0.22, 1, 0.36, 1],
-                        delay: 0.1,
-                      }}
-                    />
-                  </clipPath>
-
                   {/* Gold gradient for filled state */}
                   <linearGradient id="goldGrad" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="0%" stopColor="#D4BC8A" />
@@ -147,7 +127,7 @@ export default function LoadingScreen({ onComplete }) {
                 </g>
 
                 {/* Filled version (clips with liquid animation) */}
-                <g clipPath="url(#waveClip)">
+                <g clipPath="url(#liquidFill)">
                   {/* Pillar */}
                   <rect x="57" y="30" width="6" height="65" rx="3" fill="url(#goldGrad)" />
                   {/* Base */}
