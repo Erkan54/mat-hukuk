@@ -95,7 +95,7 @@ export default function HeroSection() {
             {[
               { icon: '⚖️', label: 'Çalışma Alanı', value: '8 Dal' },
               { icon: '📍', label: 'Konum', value: 'Sakarya' },
-              { icon: '🎯', label: 'Yaklaşım', value: 'Titiz' },
+              { icon: '🎯', label: 'Yaklaşım', value: 'Çözüm Odaklı' },
             ].map((stat, i) => (
               <motion.div
                 key={stat.label}
