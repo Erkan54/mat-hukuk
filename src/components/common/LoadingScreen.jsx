@@ -8,7 +8,7 @@ export default function LoadingScreen({ onComplete }) {
     const timer = setTimeout(() => {
       setIsVisible(false);
       setTimeout(() => onComplete?.(), 600);
-    }, 4400);
+    }, 2400);
     return () => clearTimeout(timer);
   }, [onComplete]);
 
@@ -26,43 +26,50 @@ export default function LoadingScreen({ onComplete }) {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gold/10 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gold-light/10 rounded-full blur-2xl pointer-events-none" />
 
-          {/* Ambient gold particles in scale color */}
-          {[...Array(25)].map((_, i) => {
-            const size = (i % 4) + 2; // sizes: 2px, 3px, 4px, 5px
-            const left = ((i * 17 + 7) % 100); // well distributed left positions
-            const top = ((i * 23 + 13) % 100);  // well distributed top positions
-            const duration = (i % 3) * 1.5 + 3.5; // 3.5s to 6.5s
-            const delay = (i % 5) * 0.4;
-            const goldColors = ['#D4BC8A', '#C8A96A', '#B08D4A', 'rgba(200, 169, 106, 0.8)'];
-            const color = goldColors[i % goldColors.length];
+          {/* Ambient gold particles - starts 0.2s after scale */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+            className="absolute inset-0 pointer-events-none overflow-hidden"
+          >
+            {[...Array(25)].map((_, i) => {
+              const size = (i % 4) + 2;
+              const left = ((i * 17 + 7) % 100);
+              const top = ((i * 23 + 13) % 100);
+              const duration = (i % 3) * 1.2 + 2.5;
+              const delay = 0.2 + (i % 5) * 0.15;
+              const goldColors = ['#D4BC8A', '#C8A96A', '#B08D4A', 'rgba(200, 169, 106, 0.8)'];
+              const color = goldColors[i % goldColors.length];
 
-            return (
-              <motion.div
-                key={i}
-                className="absolute rounded-full pointer-events-none"
-                style={{
-                  width: size,
-                  height: size,
-                  left: `${left}%`,
-                  top: `${top}%`,
-                  backgroundColor: color,
-                  boxShadow: size > 3 ? `0 0 ${size * 2}px ${color}` : 'none',
-                }}
-                animate={{
-                  y: [0, -45, 0],
-                  x: [0, (i % 2 === 0 ? 15 : -15), 0],
-                  opacity: [0.1, 0.7, 0.1],
-                  scale: [0.6, 1.2, 0.6],
-                }}
-                transition={{
-                  duration: duration,
-                  repeat: Infinity,
-                  delay: delay,
-                  ease: 'easeInOut',
-                }}
-              />
-            );
-          })}
+              return (
+                <motion.div
+                  key={i}
+                  className="absolute rounded-full pointer-events-none"
+                  style={{
+                    width: size,
+                    height: size,
+                    left: `${left}%`,
+                    top: `${top}%`,
+                    backgroundColor: color,
+                    boxShadow: size > 3 ? `0 0 ${size * 2}px ${color}` : 'none',
+                  }}
+                  animate={{
+                    y: [0, -35, 0],
+                    x: [0, (i % 2 === 0 ? 12 : -12), 0],
+                    opacity: [0.2, 0.8, 0.2],
+                    scale: [0.7, 1.2, 0.7],
+                  }}
+                  transition={{
+                    duration: duration,
+                    repeat: Infinity,
+                    delay: delay,
+                    ease: 'easeInOut',
+                  }}
+                />
+              );
+            })}
+          </motion.div>
 
           <div className="relative flex flex-col items-center">
             {/* Scale / Terazi SVG with liquid fill */}
@@ -82,9 +89,9 @@ export default function LoadingScreen({ onComplete }) {
                       initial={{ y: 120 }}
                       animate={{ y: 0 }}
                       transition={{
-                        duration: 3.6,
+                        duration: 1.6,
                         ease: [0.22, 1, 0.36, 1],
-                        delay: 0.3,
+                        delay: 0.1,
                       }}
                     />
                   </clipPath>
@@ -102,9 +109,9 @@ export default function LoadingScreen({ onComplete }) {
                         ],
                       }}
                       transition={{
-                        duration: 3.6,
+                        duration: 1.6,
                         ease: [0.22, 1, 0.36, 1],
-                        delay: 0.3,
+                        delay: 0.1,
                       }}
                     />
                   </clipPath>
@@ -115,8 +122,6 @@ export default function LoadingScreen({ onComplete }) {
                     <stop offset="50%" stopColor="#C8A96A" />
                     <stop offset="100%" stopColor="#B08D4A" />
                   </linearGradient>
-
-
                 </defs>
 
                 {/* Outline version (always visible, faded) */}
@@ -165,11 +170,11 @@ export default function LoadingScreen({ onComplete }) {
               </svg>
             </div>
 
-            {/* Brand Text */}
+            {/* Brand Text - Starts 0.5s after scale appears */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.4, ease: 'easeOut' }}
+              transition={{ duration: 0.5, delay: 0.5, ease: 'easeOut' }}
               className="mt-8 text-center"
             >
               <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white tracking-wide">
@@ -178,13 +183,13 @@ export default function LoadingScreen({ onComplete }) {
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: 80 }}
-                transition={{ duration: 0.8, delay: 1.8, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.5, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
                 className="h-0.5 bg-gradient-to-r from-gold to-gold-light mx-auto mt-3 rounded-full"
               />
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 0.6 }}
-                transition={{ delay: 2.0 }}
+                transition={{ duration: 0.4, delay: 0.8 }}
                 className="text-white/60 text-xs tracking-[0.35em] uppercase mt-3 font-medium"
               >
                 Hukuk Danışmanlık
