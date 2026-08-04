@@ -100,27 +100,7 @@ export default function LoadingScreen({ onComplete }) {
                     <stop offset="100%" stopColor="#B08D4A" />
                   </linearGradient>
 
-                  {/* Shimmer effect */}
-                  <linearGradient id="shimmer" x1="0" y1="0" x2="1" y2="1">
-                    <motion.stop
-                      offset="0%"
-                      stopColor="rgba(255,255,255,0)"
-                      animate={{ stopColor: ['rgba(255,255,255,0)', 'rgba(255,255,255,0.3)', 'rgba(255,255,255,0)'] }}
-                      transition={{ duration: 2, repeat: Infinity, delay: 2 }}
-                    />
-                    <motion.stop
-                      offset="50%"
-                      stopColor="rgba(255,255,255,0.2)"
-                      animate={{ stopColor: ['rgba(255,255,255,0.2)', 'rgba(255,255,255,0.5)', 'rgba(255,255,255,0.2)'] }}
-                      transition={{ duration: 2, repeat: Infinity, delay: 2 }}
-                    />
-                    <motion.stop
-                      offset="100%"
-                      stopColor="rgba(255,255,255,0)"
-                      animate={{ stopColor: ['rgba(255,255,255,0)', 'rgba(255,255,255,0.3)', 'rgba(255,255,255,0)'] }}
-                      transition={{ duration: 2, repeat: Infinity, delay: 2 }}
-                    />
-                  </linearGradient>
+
                 </defs>
 
                 {/* Outline version (always visible, faded) */}
@@ -165,46 +145,8 @@ export default function LoadingScreen({ onComplete }) {
                   <line x1="95" y1="33" x2="100" y2="58" stroke="#C8A96A" strokeWidth="2.5" strokeLinecap="round" />
                   {/* Right pan */}
                   <path d="M76,58 Q76,68 91,68 Q106,68 106,58 Z" fill="url(#goldGrad)" />
-
-                  {/* Shimmer overlay */}
-                  <rect x="0" y="0" width="120" height="120" fill="url(#shimmer)" opacity="0.5" />
                 </g>
               </svg>
-
-              {/* Glow ring behind the icon */}
-              <motion.div
-                className="absolute inset-0 rounded-full"
-                style={{
-                  background: 'radial-gradient(circle, rgba(200,169,106,0.15) 0%, transparent 70%)',
-                }}
-                animate={{ scale: [1, 1.3, 1], opacity: [0.5, 0.8, 0.5] }}
-                transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
-              />
-
-              {/* Drip particles falling from top */}
-              {[...Array(5)].map((_, i) => (
-                <motion.div
-                  key={`drip-${i}`}
-                  className="absolute rounded-full bg-gold/60"
-                  style={{
-                    width: 3,
-                    height: 8,
-                    left: `${30 + i * 10}%`,
-                    top: -10,
-                    borderRadius: '50% 50% 50% 50% / 30% 30% 70% 70%',
-                  }}
-                  animate={{
-                    y: [0, 160],
-                    opacity: [0.8, 0],
-                    scaleY: [1, 0.3],
-                  }}
-                  transition={{
-                    duration: 1.2,
-                    delay: 0.2 + i * 0.15,
-                    ease: 'easeIn',
-                  }}
-                />
-              ))}
             </div>
 
             {/* Brand Text */}
