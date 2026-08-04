@@ -1,10 +1,40 @@
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { team } from '../../data/team';
 
 export default function TeamPreview() {
+  const sectionRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start']
+  });
+
+  // Stage 1: Photos shoot fast to far left and far right! (progress 0.1 -> 0.35)
+  const photoLeftX = useTransform(scrollYProgress, [0.08, 0.32], [280, 0]);
+  const photoLeftRotate = useTransform(scrollYProgress, [0.08, 0.32], [15, -2]);
+  const photoLeftScale = useTransform(scrollYProgress, [0.08, 0.32], [0.8, 1]);
+
+  const photoRightX = useTransform(scrollYProgress, [0.08, 0.32], [-280, 0]);
+  const photoRightRotate = useTransform(scrollYProgress, [0.08, 0.32], [-15, 2]);
+  const photoRightScale = useTransform(scrollYProgress, [0.08, 0.32], [0.8, 1]);
+
+  // Stage 2: Translucent Info Cards deal out from center stack next to photos! (progress 0.22 -> 0.52)
+  const cardLeftX = useTransform(scrollYProgress, [0.22, 0.52], [180, 0]);
+  const cardLeftOpacity = useTransform(scrollYProgress, [0.22, 0.45], [0, 1]);
+  const cardLeftRotate = useTransform(scrollYProgress, [0.22, 0.52], [-8, 0]);
+
+  const cardRightX = useTransform(scrollYProgress, [0.22, 0.52], [-180, 0]);
+  const cardRightOpacity = useTransform(scrollYProgress, [0.22, 0.45], [0, 1]);
+  const cardRightRotate = useTransform(scrollYProgress, [0.22, 0.52], [8, 0]);
+
+  // Center Line & Emblem appear as cards settle (progress 0.35 -> 0.58)
+  const lineScaleY = useTransform(scrollYProgress, [0.35, 0.58], [0, 1]);
+  const lineOpacity = useTransform(scrollYProgress, [0.35, 0.58], [0, 1]);
+
   return (
-    <section className="relative section-padding bg-cream overflow-hidden">
+    <section ref={sectionRef} className="relative section-padding bg-cream overflow-hidden">
       {/* Background Image with Blur and Overlay */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <img 
@@ -43,43 +73,62 @@ export default function TeamPreview() {
           />
         </div>
 
-        {/* Desktop Layout - 2 Founders Card Split with Center Line */}
-        <div className="hidden lg:grid grid-cols-[1fr_auto_1fr] gap-10 items-stretch max-w-5xl mx-auto min-h-[500px]">
-          {/* Left Card: Av. Umut Alpgül */}
+        {/* Desktop Layout - Multi-Stage Scroll Scattering Animation */}
+        <div className="hidden lg:flex items-center justify-between gap-6 max-w-7xl mx-auto min-h-[500px] py-4">
+          
+          {/* 1. Umut Alpgül Photo Frame (Far-Left Edge) */}
           <motion.div
-            initial={{ opacity: 0, x: 180, rotate: 10, scale: 0.85 }}
-            whileInView={{ opacity: 1, x: 0, rotate: -1.5, scale: 1 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            whileHover={{ y: -8, rotate: 0, scale: 1.01 }}
-            className="relative bg-white rounded-3xl p-7 shadow-xl shadow-navy/5 border border-border/40 flex flex-col justify-between group overflow-hidden"
+            style={{
+              x: photoLeftX,
+              rotate: photoLeftRotate,
+              scale: photoLeftScale,
+            }}
+            whileHover={{ y: -8, rotate: 0, scale: 1.02 }}
+            transition={{ duration: 0.3 }}
+            className="w-64 h-[440px] rounded-3xl overflow-hidden shadow-2xl border-2 border-gold/40 relative group shrink-0 bg-gradient-to-br from-navy to-navy-dark"
           >
-            <div className="absolute top-0 left-6 right-6 h-1 bg-gradient-to-r from-gold/0 via-gold to-gold/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
-            <div>
-              <div className="relative h-64 rounded-2xl overflow-hidden mb-6 bg-gradient-to-br from-navy to-navy-dark shadow-md">
-                <img
-                  src={team[0].image}
-                  alt={team[0].name}
-                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/85 via-navy-dark/20 to-transparent" />
-                <div className="absolute bottom-3 left-4 right-4">
-                  <span className="px-3 py-1 bg-gold/90 text-white text-xs font-semibold rounded-full backdrop-blur-md shadow-sm">
-                    {team[0].title}
-                  </span>
-                </div>
-              </div>
-
-              <h3 className="font-serif text-2xl font-bold text-navy mb-1 group-hover:text-gold transition-colors">
+            <img
+              src={team[0].image}
+              alt={team[0].name}
+              className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/90 via-navy-dark/20 to-transparent" />
+            <div className="absolute bottom-4 left-4 right-4">
+              <span className="px-3 py-1 bg-gold/90 text-white text-[11px] font-semibold rounded-full backdrop-blur-md shadow-sm">
+                {team[0].title}
+              </span>
+              <h3 className="font-serif text-xl font-bold text-white mt-2 leading-tight">
                 {team[0].name}
               </h3>
-              <p className="text-xs text-text-secondary font-medium mb-4">{team[0].barNumber}</p>
+            </div>
+          </motion.div>
+
+          {/* 2. Umut Alpgül Translucent Info Card (Left Inner) */}
+          <motion.div
+            style={{
+              x: cardLeftX,
+              opacity: cardLeftOpacity,
+              rotate: cardLeftRotate,
+            }}
+            whileHover={{ y: -6, scale: 1.01 }}
+            transition={{ duration: 0.3 }}
+            className="flex-1 max-w-[340px] h-[440px] glass-effect bg-white/85 backdrop-blur-xl border border-border/50 rounded-3xl p-6 shadow-xl shadow-navy/5 flex flex-col justify-between group overflow-hidden"
+          >
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-xs font-semibold text-gold tracking-wider uppercase">Kurucu Ortak</span>
+                <span className="text-[11px] text-text-secondary font-medium">{team[0].barNumber}</span>
+              </div>
+              
+              <h3 className="font-serif text-2xl font-bold text-navy mb-3 group-hover:text-gold transition-colors">
+                {team[0].name}
+              </h3>
 
               <p className="text-sm text-text-secondary leading-relaxed mb-6">
                 {team[0].shortBio}
               </p>
 
-              <div className="mb-6">
+              <div>
                 <h4 className="text-[11px] uppercase tracking-wider text-text-secondary font-semibold mb-2.5">
                   Çalışma Alanları
                 </h4>
@@ -110,61 +159,51 @@ export default function TeamPreview() {
             </div>
           </motion.div>
 
-          {/* Center Divider Line with Scale Emblem */}
-          <div className="relative flex flex-col items-center justify-center py-4">
+          {/* 3. Center Divider Line with Scale Emblem */}
+          <div className="relative flex flex-col items-center justify-center h-[440px] px-2 shrink-0">
             <motion.div
-              initial={{ scaleY: 0 }}
-              whileInView={{ scaleY: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="w-[1px] h-full bg-gradient-to-b from-transparent via-gold/50 to-transparent origin-top"
+              style={{
+                scaleY: lineScaleY,
+                opacity: lineOpacity,
+              }}
+              className="w-[1px] h-full bg-gradient-to-b from-transparent via-gold/60 to-transparent origin-top"
             />
             <motion.div
-              initial={{ opacity: 0, scale: 0 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.6 }}
+              style={{
+                opacity: lineOpacity,
+              }}
               className="absolute top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white shadow-md border border-gold/40 flex items-center justify-center text-gold text-sm z-10"
             >
               ⚖
             </motion.div>
           </div>
 
-          {/* Right Card: Av. Mehmet Akif Trabzon */}
+          {/* 4. Mehmet Akif Trabzon Translucent Info Card (Right Inner) */}
           <motion.div
-            initial={{ opacity: 0, x: -180, rotate: -10, scale: 0.85 }}
-            whileInView={{ opacity: 1, x: 0, rotate: 1.5, scale: 1 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            whileHover={{ y: -8, rotate: 0, scale: 1.01 }}
-            className="relative bg-white rounded-3xl p-7 shadow-xl shadow-navy/5 border border-border/40 flex flex-col justify-between group overflow-hidden"
+            style={{
+              x: cardRightX,
+              opacity: cardRightOpacity,
+              rotate: cardRightRotate,
+            }}
+            whileHover={{ y: -6, scale: 1.01 }}
+            transition={{ duration: 0.3 }}
+            className="flex-1 max-w-[340px] h-[440px] glass-effect bg-white/85 backdrop-blur-xl border border-border/50 rounded-3xl p-6 shadow-xl shadow-navy/5 flex flex-col justify-between group overflow-hidden"
           >
-            <div className="absolute top-0 left-6 right-6 h-1 bg-gradient-to-r from-gold/0 via-gold to-gold/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
             <div>
-              <div className="relative h-64 rounded-2xl overflow-hidden mb-6 bg-gradient-to-br from-navy to-navy-dark shadow-md">
-                <img
-                  src={team[1].image}
-                  alt={team[1].name}
-                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/85 via-navy-dark/20 to-transparent" />
-                <div className="absolute bottom-3 left-4 right-4">
-                  <span className="px-3 py-1 bg-gold/90 text-white text-xs font-semibold rounded-full backdrop-blur-md shadow-sm">
-                    {team[1].title}
-                  </span>
-                </div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-xs font-semibold text-gold tracking-wider uppercase">Kurucu Ortak</span>
+                <span className="text-[11px] text-text-secondary font-medium">{team[1].barNumber}</span>
               </div>
-
-              <h3 className="font-serif text-2xl font-bold text-navy mb-1 group-hover:text-gold transition-colors">
+              
+              <h3 className="font-serif text-2xl font-bold text-navy mb-3 group-hover:text-gold transition-colors">
                 {team[1].name}
               </h3>
-              <p className="text-xs text-text-secondary font-medium mb-4">{team[1].barNumber}</p>
 
               <p className="text-sm text-text-secondary leading-relaxed mb-6">
                 {team[1].shortBio}
               </p>
 
-              <div className="mb-6">
+              <div>
                 <h4 className="text-[11px] uppercase tracking-wider text-text-secondary font-semibold mb-2.5">
                   Çalışma Alanları
                 </h4>
@@ -194,6 +233,34 @@ export default function TeamPreview() {
               </Link>
             </div>
           </motion.div>
+
+          {/* 5. Mehmet Akif Trabzon Photo Frame (Far-Right Edge) */}
+          <motion.div
+            style={{
+              x: photoRightX,
+              rotate: photoRightRotate,
+              scale: photoRightScale,
+            }}
+            whileHover={{ y: -8, rotate: 0, scale: 1.02 }}
+            transition={{ duration: 0.3 }}
+            className="w-64 h-[440px] rounded-3xl overflow-hidden shadow-2xl border-2 border-gold/40 relative group shrink-0 bg-gradient-to-br from-navy to-navy-dark"
+          >
+            <img
+              src={team[1].image}
+              alt={team[1].name}
+              className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/90 via-navy-dark/20 to-transparent" />
+            <div className="absolute bottom-4 left-4 right-4">
+              <span className="px-3 py-1 bg-gold/90 text-white text-[11px] font-semibold rounded-full backdrop-blur-md shadow-sm">
+                {team[1].title}
+              </span>
+              <h3 className="font-serif text-xl font-bold text-white mt-2 leading-tight">
+                {team[1].name}
+              </h3>
+            </div>
+          </motion.div>
+
         </div>
 
         {/* Mobile Layout */}
