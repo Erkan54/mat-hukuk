@@ -9,8 +9,8 @@ export default function PracticeAreasPreview() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle
           label="Hizmet Alanları"
-          title="Uzmanlık alanlarımız"
-          subtitle="Geniş kapsamlı hukuki hizmetlerimizle her alanda yanınızdayız."
+          title="Çalışma alanlarımız"
+          subtitle="Büromuzun ağırlıklı olarak faaliyet gösterdiği hukuk dalları."
         />
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-4">

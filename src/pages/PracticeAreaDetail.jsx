@@ -127,7 +127,7 @@ export default function PracticeAreaDetail() {
                 className="bg-navy rounded-2xl p-6 text-white"
               >
                 <h3 className="font-serif text-lg font-semibold mb-3">Hukuki Destek Alın</h3>
-                <p className="text-white/70 text-sm mb-4">Bu alandaki hukuki süreçleriniz hakkında uzman desteği almak için bizimle iletişime geçin.</p>
+                <p className="text-white/70 text-sm mb-4">Bu alandaki hukuki süreçleriniz hakkında danışmanlık almak için bizimle iletişime geçin.</p>
                 <Link
                   to="/iletisim"
                   className="inline-block px-5 py-2.5 bg-gold text-white text-sm font-semibold rounded-lg hover:bg-gold-dark transition-colors"

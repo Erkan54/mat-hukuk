@@ -14,7 +14,7 @@ const values = [
   },
   {
     title: 'Çözüm Odaklılık',
-    description: 'Her hukuki sorunu, müvekkilimizin menfaatini en üst düzeyde koruyacak şekilde stratejik bir yaklaşımla ele alırız.',
+    description: 'Her hukuki sorunu, müvekkilimizin menfaatini gözeterek titiz bir yaklaşımla ele alırız.',
     icon: '🎯'
   },
   {
@@ -29,7 +29,7 @@ const values = [
   },
   {
     title: 'Profesyonellik',
-    description: 'İşimizi en yüksek mesleki standartlarda yürütür, her dosyaya aynı titizlik ve özenle yaklaşırız.',
+    description: 'İşimizi mesleki standartlara uygun şekilde yürütür, her dosyaya aynı titizlik ve özenle yaklaşırız.',
     icon: '⚖️'
   }
 ];
@@ -59,26 +59,26 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="font-serif text-3xl font-bold text-text-primary mb-6">Sakarya Avukat - Büro Profili</h2>
+              <h2 className="font-serif text-3xl font-bold text-text-primary mb-6">Büro Profili</h2>
               <div className="space-y-4 text-text-secondary leading-relaxed">
                 <p>
-                  <strong>Sakarya Avukat</strong> MAT & ALPGÜL Hukuk Danışmanlık, Av. Umut Alpgül ve Av. Mehmet Akif Trabzon tarafından kurulmuştur. <strong>Sakarya</strong>'da Avukat olarak sahip olduğumuz kurumsal ve profesyonel çalışma anlayışı ile başta <strong>Sakarya'da Boşanma Avukatı</strong>, <strong>Sakarya'da Ağır Ceza Avukatı</strong>, <strong>Sakarya'da İcra Avukatı</strong>, Şirket Danışmanlığı ve Alacak Davaları olmak üzere müvekkillerimize birçok alanda avukatlık hizmeti vermektedir.
+                  MAT & ALPGÜL Hukuk Danışmanlık, Av. Umut Alpgül ve Av. Mehmet Akif Trabzon tarafından Sakarya'da kurulmuştur. Büromuz; boşanma ve aile hukuku, ceza hukuku, icra ve iflas hukuku, şirket danışmanlığı ve alacak davaları başta olmak üzere çeşitli hukuk alanlarında müvekkillerine avukatlık hizmeti sunmaktadır.
                 </p>
                 <p>
-                  <strong>Sakarya Avukat</strong> MAT & ALPGÜL Hukuk Danışmanlık Merkezi <strong>Sakarya/Adapazarı</strong> olan ofisimiz, uzun yıllardır mesleki birikim ve tecrübeye sahip olmanın yanı sıra kendisini akademik olarak geliştirmiş alanında uzman geniş ve etkili bir kadroya sahiptir. Kurulduğu günden bu yana deneyimli ve aynı zamanda dinamik yapısıyla farklı sektörlerden gelen gerçek ve tüzel kişi müvekkillerine, müvekkillerinin ticari hedeflerini ve gelişme taleplerini de göz önüne alarak en iyi hizmeti vermek gayesiyle çalışmalarına devam etmektedir.
+                  Sakarya/Adapazarı merkezli ofisimiz, mesleki birikim ve akademik çalışmalarla desteklenen bir kadroyla faaliyet göstermektedir. Kurulduğu günden bu yana farklı sektörlerden gelen gerçek ve tüzel kişi müvekkillerine, ticari hedeflerini ve gelişme taleplerini de göz önüne alarak hizmet sunmaya devam etmektedir.
                 </p>
                 <p>
-                  Görünenin ardına bakarak, müvekkilleri için yaratıcı çözümler bulmakta ve müvekkillerle kurulan yakın işbirliği sayesinde onların iş hedeflerine ulaşmalarında büyük destek sağlamaktadır. <strong>Sakarya</strong>'da avukat-müvekkil ilişkileri karşılıklı güven esasına dayanır.
+                  Müvekkillerle kurulan yakın işbirliği çerçevesinde hukuki süreçler titizlikle takip edilmektedir. Avukat-müvekkil ilişkilerinde karşılıklı güven esası temel ilke olarak benimsenmiştir.
                 </p>
               </div>
 
-              <h2 className="font-serif text-3xl font-bold text-text-primary mb-6 mt-12">Sakarya ile Geçmişimiz</h2>
+              <h2 className="font-serif text-3xl font-bold text-text-primary mb-6 mt-12">Sakarya'daki Faaliyetlerimiz</h2>
               <div className="space-y-4 text-text-secondary leading-relaxed">
                 <p>
-                  MAT & ALPGÜL Hukuk Danışmanlık olarak, köklerimiz <strong>Sakarya</strong>'nın tarihine ve kültürel dokusuna derinden bağlıdır. <strong>Sakarya</strong>'nın ticaret hayatından aile yapısına, <strong>Sakarya Adliyesi</strong>'nden <strong>Adapazarı</strong> merkezindeki ofisimize kadar her alanda hukuki ihtiyaçları karşılarken, şehrimizin dinamiklerini çok iyi biliyoruz.
+                  MAT & ALPGÜL Hukuk Danışmanlık olarak Sakarya'nın ticaret hayatından aile yapısına, Sakarya Adliyesi'nden Adapazarı merkezindeki ofisimize kadar çeşitli alanlarda hukuki danışmanlık ve dava takibi hizmeti sunmaktayız.
                 </p>
                 <p>
-                  <strong>Sakarya</strong> halkına ve <strong>Sakarya</strong>'daki işletmelere hizmet etmek bizim için bir gurur kaynağıdır. <strong>Sakarya</strong>'nın <strong>Sapanca</strong>, <strong>Hendek</strong>, <strong>Akyazı</strong>, <strong>Geyve</strong>, <strong>Karasu</strong>, <strong>Kocaali</strong> gibi ilçelerinde edindiğimiz tecrübelerle, <strong>Sakarya</strong>lı hemşehrilerimizin haklarını en iyi şekilde savunmayı sürdürüyoruz. <strong>Sakarya</strong>'da avukat arayanlar için güvenilir bir çözüm ortağı olarak hizmet vermeye devam ediyoruz.
+                  Sakarya merkez ve Sapanca, Hendek, Akyazı, Geyve, Karasu, Kocaali gibi ilçelerden gelen müvekkillerimize hukuki danışmanlık ve dava takibi hizmeti sunmaktayız.
                 </p>
               </div>
             </motion.div>

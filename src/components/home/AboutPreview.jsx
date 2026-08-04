@@ -64,7 +64,7 @@ export default function AboutPreview() {
               className="mt-6 text-text-secondary text-sm leading-relaxed"
             >
               <p>
-                <strong>MAT & ALPGÜL Hukuk Danışmanlık</strong>, Av. Umut Alpgül ve Av. Mehmet Akif Trabzon tarafından <strong>Sakarya/Adapazarı</strong> merkezli kurulmuştur. Kurumsal çalışma anlayışımız ve Sakarya'da Boşanma Avukatı, Sakarya'da Ağır Ceza Avukatı, Sakarya'da İcra Avukatı gibi birçok alandaki tecrübemizle müvekkillerimize dinamik ve yaratıcı hukuki çözümler sunuyoruz.
+                <strong>MAT & ALPGÜL Hukuk Danışmanlık</strong>, Av. Umut Alpgül ve Av. Mehmet Akif Trabzon tarafından <strong>Sakarya/Adapazarı</strong> merkezli kurulmuştur. Büromuz; boşanma ve aile hukuku, ceza hukuku, icra ve iflas hukuku başta olmak üzere çeşitli alanlarda danışmanlık ve dava takibi hizmeti sunmaktadır.
               </p>
             </motion.div>
 

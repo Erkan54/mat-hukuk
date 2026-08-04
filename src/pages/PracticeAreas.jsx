@@ -8,7 +8,7 @@ export default function PracticeAreas() {
     <main>
       <PageHero
         title="Hizmet Alanları"
-        subtitle="Geniş kapsamlı hukuki hizmetlerimizle her alanda yanınızdayız."
+        subtitle="Büromuzun ağırlıklı olarak faaliyet gösterdiği hukuk dalları."
         breadcrumbs={[
           { label: 'Ana Sayfa', link: '/' },
           { label: 'Hizmet Alanları' }

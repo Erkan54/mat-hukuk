@@ -47,7 +47,7 @@ export default function TeamPreview() {
             transition={{ delay: 0.1 }}
             className="font-serif text-3xl md:text-4xl font-bold text-text-primary"
           >
-            Deneyimli kadromuz
+            Ekibimizi tanıyın
           </motion.h2>
           <motion.div
             initial={{ width: 0 }}
@@ -100,7 +100,7 @@ export default function TeamPreview() {
 
                 <div className="mt-6 space-y-4">
                   <div>
-                    <h4 className="text-xs uppercase tracking-wider text-text-secondary font-semibold mb-2">Uzmanlık Alanları</h4>
+                    <h4 className="text-xs uppercase tracking-wider text-text-secondary font-semibold mb-2">Çalışma Alanları</h4>
                     <div className="flex flex-wrap gap-2">
                       {activeLawyer.expertise.map((exp) => (
                         <span key={exp} className="px-3 py-1 bg-navy/5 text-navy text-xs font-medium rounded-full">

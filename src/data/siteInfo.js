@@ -1,7 +1,7 @@
 export const siteInfo = {
   name: 'MAT & ALPGÜL Hukuk Danışmanlık',
   shortName: 'MAT & ALPGÜL',
-  tagline: 'Sakarya\'da hukuki süreçlerinizde güvenilir ve çözüm odaklı destek',
+  tagline: 'Sakarya\'da hukuki danışmanlık ve dava takibi hizmetleri',
   description: 'Ceza, iş, ticaret, aile ve bilişim hukuku alanlarında danışmanlık ve dava takibi hizmetleri sunuyoruz.',
   address: 'Cumhuriyet Mah Bahçıvan Sk No:105 Kat:2 Daire:18 Adapazarı/Sakarya',
   phone: '0536 498 81 80',

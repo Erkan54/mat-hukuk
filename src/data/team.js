@@ -10,7 +10,7 @@ export const team = [
     education: [
       'Hukuk Fakültesi - Lisans'
     ],
-    experience: 'Deneyimli Avukat',
+    experience: 'Avukat',
     barNumber: 'Sakarya Barosu - 1939',
     languages: ['Türkçe', 'İngilizce', 'İspanyolca'],
     publications: 6
@@ -26,7 +26,7 @@ export const team = [
     education: [
       'Hukuk Fakültesi - Lisans'
     ],
-    experience: 'Deneyimli Avukat',
+    experience: 'Avukat',
     barNumber: 'Sakarya Barosu',
     languages: ['Türkçe', 'İngilizce'],
     publications: 4

@@ -5,7 +5,7 @@ export const faqData = [
   },
   {
     question: 'Sakarya dışındaki illerdeki davalara bakıyor musunuz?',
-    answer: 'Evet, merkezimiz Sakarya olmakla birlikte çevre iller başta olmak üzere Türkiye\'nin pek çok bölgesindeki davalarınız için profesyonel hukuki destek ve dava takip hizmeti sağlamaktayız.'
+    answer: 'Evet, merkezimiz Sakarya olmakla birlikte çevre iller başta olmak üzere Türkiye\'nin pek çok bölgesindeki davalarınız için hukuki danışmanlık ve dava takibi hizmeti sağlamaktayız.'
   },
   {
     question: 'İlk görüşme nasıl planlanır?',

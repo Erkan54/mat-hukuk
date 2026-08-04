@@ -7,7 +7,7 @@ export default function Team() {
     <main>
       <PageHero
         title="Ekibimiz"
-        subtitle="Deneyimli ve uzman kadromuzla hukuki süreçlerinizde yanınızdayız."
+        subtitle="Büromuzda görev yapan avukatlar hakkında bilgi."
         breadcrumbs={[
           { label: 'Ana Sayfa', link: '/' },
           { label: 'Ekibimiz' }
@@ -57,7 +57,7 @@ export default function Team() {
 
                     <div className="grid sm:grid-cols-2 gap-8">
                       <div>
-                        <h4 className="text-xs uppercase tracking-wider text-gold font-semibold mb-3">Uzmanlık Alanları</h4>
+                        <h4 className="text-xs uppercase tracking-wider text-gold font-semibold mb-3">Çalışma Alanları</h4>
                         <div className="flex flex-wrap gap-2">
                           {lawyer.expertise.map((exp) => (
                             <span key={exp} className="px-3 py-1.5 bg-navy/5 text-navy text-sm font-medium rounded-lg">

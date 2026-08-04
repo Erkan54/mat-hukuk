@@ -43,10 +43,9 @@ export default function HeroSection() {
               transition={{ duration: 0.8, delay: 0.1 }}
               className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-text-primary leading-tight"
             >
-              Sakarya'da hukuki süreçlerinizde{' '}
-              <span className="text-navy">güvenilir</span> ve{' '}
+              Sakarya'da{' '}
               <span className="relative inline-block">
-                <span className="relative z-10">çözüm odaklı</span>
+                <span className="relative z-10">hukuki danışmanlık</span>
                 <motion.span
                   initial={{ width: 0 }}
                   animate={{ width: '100%' }}
@@ -54,7 +53,7 @@ export default function HeroSection() {
                   className="absolute bottom-2 left-0 h-3 bg-gold/20 -z-0"
                 />
               </span>{' '}
-              destek
+              ve <span className="text-navy">dava takibi</span> hizmetleri
             </motion.h1>
 
             <motion.p
@@ -114,7 +113,7 @@ export default function HeroSection() {
                 <div className="absolute inset-8 rounded-full bg-gradient-to-br from-navy/5 to-gold/5 flex items-center justify-center">
                   <div className="text-center">
                     <div className="font-serif text-6xl font-bold text-navy/15">⚖</div>
-                    <div className="mt-2 text-xs tracking-widest uppercase text-text-secondary/50 font-medium">Adalet & Güven</div>
+                    <div className="mt-2 text-xs tracking-widest uppercase text-text-secondary/50 font-medium">Hukuk & Adalet</div>
                   </div>
                 </div>
               </div>
@@ -125,7 +124,7 @@ export default function HeroSection() {
                 transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
                 className="absolute top-4 right-0 glass-effect rounded-xl px-4 py-3 shadow-lg"
               >
-                <div className="text-xs text-text-secondary">Uzmanlık Alanı</div>
+                <div className="text-xs text-text-secondary">Çalışma Alanı</div>
                 <div className="text-sm font-semibold text-navy">8 Hukuk Dalı</div>
               </motion.div>
 
@@ -134,8 +133,8 @@ export default function HeroSection() {
                 transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
                 className="absolute bottom-8 left-0 glass-effect rounded-xl px-4 py-3 shadow-lg"
               >
-                <div className="text-xs text-text-secondary">Mesleki Deneyim</div>
-                <div className="text-sm font-semibold text-navy">12+ Yıl</div>
+                <div className="text-xs text-text-secondary">Konum</div>
+                <div className="text-sm font-semibold text-navy">Sakarya</div>
               </motion.div>
 
               <motion.div
