@@ -4,7 +4,7 @@ export const team = [
     name: 'Av. Umut Alpgül',
     title: 'Kurucu Ortak',
     role: 'founder',
-    image: '/images/lawyer1.jpg',
+    image: '/images/lawyer1.png',
     shortBio: 'Ceza hukuku, ticaret hukuku ve iş hukuku alanlarında mesleki deneyime sahiptir. Sakarya Barosu\'na kayıtlı olarak avukatlık mesleğini icra etmektedir.',
     expertise: ['Ceza Hukuku', 'Ticaret Hukuku', 'İş Hukuku', 'Şirketler Hukuku'],
     education: [

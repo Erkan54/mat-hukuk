@@ -72,15 +72,29 @@ export default function TeamPreview() {
                   activeIndex !== 0 ? 'blurred' : ''
                 }`}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-navy to-navy-dark flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-3">
-                      <span className="font-serif text-2xl font-bold text-gold">AY</span>
+                {team[0].image ? (
+                  <>
+                    <img
+                      src={team[0].image}
+                      alt={team[0].name}
+                      className="w-full h-full object-cover object-top"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/90 via-navy-dark/20 to-transparent p-4 flex flex-col justify-end">
+                      <p className="text-white text-base font-semibold font-serif">{team[0].name}</p>
+                      <p className="text-gold text-xs font-medium">{team[0].title}</p>
                     </div>
-                    <p className="text-white text-sm font-medium">{team[0].name}</p>
-                    <p className="text-white/60 text-xs mt-1">{team[0].title}</p>
+                  </>
+                ) : (
+                  <div className="absolute inset-0 bg-gradient-to-br from-navy to-navy-dark flex items-center justify-center">
+                    <div className="text-center">
+                      <div className="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <span className="font-serif text-2xl font-bold text-gold">UA</span>
+                      </div>
+                      <p className="text-white text-sm font-medium">{team[0].name}</p>
+                      <p className="text-white/60 text-xs mt-1">{team[0].title}</p>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             </motion.div>
 
@@ -152,15 +166,29 @@ export default function TeamPreview() {
                   activeIndex !== 1 ? 'blurred' : ''
                 }`}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-navy-light to-navy flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-3">
-                      <span className="font-serif text-2xl font-bold text-gold">ZD</span>
+                {team[1].image ? (
+                  <>
+                    <img
+                      src={team[1].image}
+                      alt={team[1].name}
+                      className="w-full h-full object-cover object-top"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/90 via-navy-dark/20 to-transparent p-4 flex flex-col justify-end">
+                      <p className="text-white text-base font-semibold font-serif">{team[1].name}</p>
+                      <p className="text-gold text-xs font-medium">{team[1].title}</p>
                     </div>
-                    <p className="text-white text-sm font-medium">{team[1].name}</p>
-                    <p className="text-white/60 text-xs mt-1">{team[1].title}</p>
+                  </>
+                ) : (
+                  <div className="absolute inset-0 bg-gradient-to-br from-navy-light to-navy flex items-center justify-center">
+                    <div className="text-center">
+                      <div className="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <span className="font-serif text-2xl font-bold text-gold">MA</span>
+                      </div>
+                      <p className="text-white text-sm font-medium">{team[1].name}</p>
+                      <p className="text-white/60 text-xs mt-1">{team[1].title}</p>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             </motion.div>
           </div>
@@ -178,11 +206,19 @@ export default function TeamPreview() {
               className="bg-white rounded-2xl p-6 shadow-sm border border-border/30"
             >
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-navy to-navy-dark flex items-center justify-center">
-                  <span className="font-serif text-lg font-bold text-gold">
-                    {lawyer.name.split(' ').slice(1).map(n => n[0]).join('')}
-                  </span>
-                </div>
+                {lawyer.image ? (
+                  <img
+                    src={lawyer.image}
+                    alt={lawyer.name}
+                    className="w-16 h-16 rounded-xl object-cover object-top border border-gold/30 shrink-0"
+                  />
+                ) : (
+                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-navy to-navy-dark flex items-center justify-center shrink-0">
+                    <span className="font-serif text-lg font-bold text-gold">
+                      {lawyer.name.split(' ').slice(1).map(n => n[0]).join('')}
+                    </span>
+                  </div>
+                )}
                 <div>
                   <h3 className="font-serif text-lg font-semibold text-navy">{lawyer.name}</h3>
                   <p className="text-sm text-gold">{lawyer.title}</p>

@@ -38,17 +38,32 @@ export default function Team() {
               >
                 <div className={`grid lg:grid-cols-3 ${index % 2 === 1 ? 'lg:direction-rtl' : ''}`}>
                   {/* Photo area */}
-                  <div className="bg-gradient-to-br from-navy to-navy-dark p-12 flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="w-32 h-32 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <span className="font-serif text-4xl font-bold text-gold">
-                          {lawyer.name.split(' ').slice(1).map(n => n[0]).join('')}
-                        </span>
+                  <div className="bg-gradient-to-br from-navy to-navy-dark p-8 flex items-center justify-center">
+                    {lawyer.image ? (
+                      <div className="text-center">
+                        <div className="w-36 h-44 rounded-2xl overflow-hidden shadow-2xl mx-auto mb-4 border-2 border-gold/40">
+                          <img
+                            src={lawyer.image}
+                            alt={lawyer.name}
+                            className="w-full h-full object-cover object-top"
+                          />
+                        </div>
+                        <h3 className="font-serif text-2xl font-bold text-white">{lawyer.name}</h3>
+                        <p className="text-gold mt-1 font-medium">{lawyer.title}</p>
+                        <p className="text-white/50 text-sm mt-1">{lawyer.barNumber}</p>
                       </div>
-                      <h3 className="font-serif text-2xl font-bold text-white">{lawyer.name}</h3>
-                      <p className="text-gold mt-2 font-medium">{lawyer.title}</p>
-                      <p className="text-white/50 text-sm mt-2">{lawyer.barNumber}</p>
-                    </div>
+                    ) : (
+                      <div className="text-center">
+                        <div className="w-32 h-32 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                          <span className="font-serif text-4xl font-bold text-gold">
+                            {lawyer.name.split(' ').slice(1).map(n => n[0]).join('')}
+                          </span>
+                        </div>
+                        <h3 className="font-serif text-2xl font-bold text-white">{lawyer.name}</h3>
+                        <p className="text-gold mt-2 font-medium">{lawyer.title}</p>
+                        <p className="text-white/50 text-sm mt-2">{lawyer.barNumber}</p>
+                      </div>
+                    )}
                   </div>
 
                   {/* Info */}
