@@ -21,6 +21,7 @@ export default function PracticeAreasPreview() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: (index % 4) * 0.1 }}
+              className={index >= 2 ? 'hidden sm:block' : ''}
             >
               <Link
                 to={`/hizmet-alanlari/${area.id}`}
@@ -49,14 +50,14 @@ export default function PracticeAreasPreview() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="text-center mt-12"
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="text-center mt-8 sm:mt-12"
         >
           <Link
             to="/hizmet-alanlari"
-            className="inline-flex items-center gap-2 text-navy font-semibold hover:text-gold transition-colors group"
+            className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3.5 sm:px-0 sm:py-0 bg-navy sm:bg-transparent text-white sm:text-navy text-sm sm:text-base font-semibold rounded-xl sm:rounded-none hover:bg-navy-dark sm:hover:bg-transparent sm:hover:text-gold transition-all group shadow-sm sm:shadow-none"
           >
-            Tüm Hizmet Alanlarını Görüntüle
+            Tüm Hizmet Alanlarını Gör
             <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
