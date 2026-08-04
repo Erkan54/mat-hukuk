@@ -22,31 +22,47 @@ export default function LoadingScreen({ onComplete }) {
           className="fixed inset-0 z-[9999] flex items-center justify-center"
           style={{ background: 'linear-gradient(135deg, #1E3A4C 0%, #2F5266 50%, #1E3A4C 100%)' }}
         >
-          {/* Ambient particles */}
-          {[...Array(12)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute rounded-full"
-              style={{
-                width: Math.random() * 4 + 2,
-                height: Math.random() * 4 + 2,
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                background: `rgba(200, 169, 106, ${Math.random() * 0.3 + 0.1})`,
-              }}
-              animate={{
-                y: [0, -30, 0],
-                opacity: [0, 0.6, 0],
-                scale: [0.5, 1, 0.5],
-              }}
-              transition={{
-                duration: Math.random() * 2 + 2,
-                repeat: Infinity,
-                delay: Math.random() * 2,
-                ease: 'easeInOut',
-              }}
-            />
-          ))}
+          {/* Central ambient gold glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gold/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gold-light/10 rounded-full blur-2xl pointer-events-none" />
+
+          {/* Ambient gold particles in scale color */}
+          {[...Array(25)].map((_, i) => {
+            const size = (i % 4) + 2; // sizes: 2px, 3px, 4px, 5px
+            const left = ((i * 17 + 7) % 100); // well distributed left positions
+            const top = ((i * 23 + 13) % 100);  // well distributed top positions
+            const duration = (i % 3) * 1.5 + 3.5; // 3.5s to 6.5s
+            const delay = (i % 5) * 0.4;
+            const goldColors = ['#D4BC8A', '#C8A96A', '#B08D4A', 'rgba(200, 169, 106, 0.8)'];
+            const color = goldColors[i % goldColors.length];
+
+            return (
+              <motion.div
+                key={i}
+                className="absolute rounded-full pointer-events-none"
+                style={{
+                  width: size,
+                  height: size,
+                  left: `${left}%`,
+                  top: `${top}%`,
+                  backgroundColor: color,
+                  boxShadow: size > 3 ? `0 0 ${size * 2}px ${color}` : 'none',
+                }}
+                animate={{
+                  y: [0, -45, 0],
+                  x: [0, (i % 2 === 0 ? 15 : -15), 0],
+                  opacity: [0.1, 0.7, 0.1],
+                  scale: [0.6, 1.2, 0.6],
+                }}
+                transition={{
+                  duration: duration,
+                  repeat: Infinity,
+                  delay: delay,
+                  ease: 'easeInOut',
+                }}
+              />
+            );
+          })}
 
           <div className="relative flex flex-col items-center">
             {/* Scale / Terazi SVG with liquid fill */}
