@@ -44,7 +44,7 @@ export default function TeamPreview() {
         </div>
 
         {/* Desktop Layout - Straight Cards Spread Wide Across Screen */}
-        <div className="hidden lg:flex items-center justify-between gap-6 max-w-[1360px] mx-auto min-h-[460px] py-4">
+        <div className="hidden lg:flex items-center justify-between gap-6 max-w-[1400px] mx-auto min-h-[460px] py-4">
           
           {/* 1. Umut Alpgül Photo Frame (Far-Left Edge) */}
           <motion.div
@@ -53,7 +53,7 @@ export default function TeamPreview() {
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             whileHover={{ scale: 1.03 }}
-            className="w-64 h-[440px] rounded-3xl overflow-hidden shadow-xl border-2 border-gold/40 relative group shrink-0 bg-gradient-to-br from-navy to-navy-dark cursor-pointer"
+            className="w-64 h-[440px] rounded-3xl overflow-hidden shadow-xl border-2 border-gold/40 relative group shrink-0 bg-gradient-to-br from-navy to-navy-dark cursor-pointer -ml-2.5"
           >
             <img
               src={team[0].image}
@@ -206,7 +206,7 @@ export default function TeamPreview() {
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             whileHover={{ scale: 1.03 }}
-            className="w-64 h-[440px] rounded-3xl overflow-hidden shadow-xl border-2 border-gold/40 relative group shrink-0 bg-gradient-to-br from-navy to-navy-dark cursor-pointer"
+            className="w-64 h-[440px] rounded-3xl overflow-hidden shadow-xl border-2 border-gold/40 relative group shrink-0 bg-gradient-to-br from-navy to-navy-dark cursor-pointer -mr-2.5"
           >
             <img
               src={team[1].image}
