@@ -1,40 +1,10 @@
-import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { team } from '../../data/team';
 
 export default function TeamPreview() {
-  const sectionRef = useRef(null);
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start end', 'end start']
-  });
-
-  // Stage 1: Photos shoot fast to far left and far right! (progress 0.1 -> 0.35)
-  const photoLeftX = useTransform(scrollYProgress, [0.08, 0.32], [280, 0]);
-  const photoLeftRotate = useTransform(scrollYProgress, [0.08, 0.32], [15, -2]);
-  const photoLeftScale = useTransform(scrollYProgress, [0.08, 0.32], [0.8, 1]);
-
-  const photoRightX = useTransform(scrollYProgress, [0.08, 0.32], [-280, 0]);
-  const photoRightRotate = useTransform(scrollYProgress, [0.08, 0.32], [-15, 2]);
-  const photoRightScale = useTransform(scrollYProgress, [0.08, 0.32], [0.8, 1]);
-
-  // Stage 2: Translucent Info Cards deal out from center stack next to photos! (progress 0.22 -> 0.52)
-  const cardLeftX = useTransform(scrollYProgress, [0.22, 0.52], [180, 0]);
-  const cardLeftOpacity = useTransform(scrollYProgress, [0.22, 0.45], [0, 1]);
-  const cardLeftRotate = useTransform(scrollYProgress, [0.22, 0.52], [-8, 0]);
-
-  const cardRightX = useTransform(scrollYProgress, [0.22, 0.52], [-180, 0]);
-  const cardRightOpacity = useTransform(scrollYProgress, [0.22, 0.45], [0, 1]);
-  const cardRightRotate = useTransform(scrollYProgress, [0.22, 0.52], [8, 0]);
-
-  // Center Line & Emblem appear as cards settle (progress 0.35 -> 0.58)
-  const lineScaleY = useTransform(scrollYProgress, [0.35, 0.58], [0, 1]);
-  const lineOpacity = useTransform(scrollYProgress, [0.35, 0.58], [0, 1]);
-
   return (
-    <section ref={sectionRef} className="relative section-padding bg-cream overflow-hidden">
+    <section className="relative section-padding bg-cream overflow-hidden">
       {/* Background Image with Blur and Overlay */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <img 
@@ -73,19 +43,17 @@ export default function TeamPreview() {
           />
         </div>
 
-        {/* Desktop Layout - Multi-Stage Scroll Scattering Animation */}
-        <div className="hidden lg:flex items-center justify-between gap-6 max-w-7xl mx-auto min-h-[500px] py-4">
+        {/* Desktop Layout - Straight Cards Spread Wide Across Screen */}
+        <div className="hidden lg:flex items-center justify-between gap-6 max-w-[1360px] mx-auto min-h-[460px] py-4">
           
           {/* 1. Umut Alpgül Photo Frame (Far-Left Edge) */}
           <motion.div
-            style={{
-              x: photoLeftX,
-              rotate: photoLeftRotate,
-              scale: photoLeftScale,
-            }}
-            whileHover={{ y: -8, rotate: 0, scale: 1.02 }}
-            transition={{ duration: 0.3 }}
-            className="w-64 h-[440px] rounded-3xl overflow-hidden shadow-2xl border-2 border-gold/40 relative group shrink-0 bg-gradient-to-br from-navy to-navy-dark"
+            initial={{ opacity: 0, x: 160 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            whileHover={{ scale: 1.03 }}
+            className="w-64 h-[440px] rounded-3xl overflow-hidden shadow-xl border-2 border-gold/40 relative group shrink-0 bg-gradient-to-br from-navy to-navy-dark cursor-pointer"
           >
             <img
               src={team[0].image}
@@ -105,14 +73,12 @@ export default function TeamPreview() {
 
           {/* 2. Umut Alpgül Translucent Info Card (Left Inner) */}
           <motion.div
-            style={{
-              x: cardLeftX,
-              opacity: cardLeftOpacity,
-              rotate: cardLeftRotate,
-            }}
-            whileHover={{ y: -6, scale: 1.01 }}
-            transition={{ duration: 0.3 }}
-            className="flex-1 max-w-[340px] h-[440px] glass-effect bg-white/85 backdrop-blur-xl border border-border/50 rounded-3xl p-6 shadow-xl shadow-navy/5 flex flex-col justify-between group overflow-hidden"
+            initial={{ opacity: 0, x: 80 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            whileHover={{ scale: 1.03 }}
+            className="flex-1 max-w-[360px] h-[440px] glass-effect bg-white/90 backdrop-blur-xl border border-border/50 rounded-3xl p-6 shadow-xl shadow-navy/5 flex flex-col justify-between group overflow-hidden cursor-pointer"
           >
             <div>
               <div className="flex items-center justify-between mb-3">
@@ -162,16 +128,17 @@ export default function TeamPreview() {
           {/* 3. Center Divider Line with Scale Emblem */}
           <div className="relative flex flex-col items-center justify-center h-[440px] px-2 shrink-0">
             <motion.div
-              style={{
-                scaleY: lineScaleY,
-                opacity: lineOpacity,
-              }}
+              initial={{ opacity: 0, scaleY: 0 }}
+              whileInView={{ opacity: 1, scaleY: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
               className="w-[1px] h-full bg-gradient-to-b from-transparent via-gold/60 to-transparent origin-top"
             />
             <motion.div
-              style={{
-                opacity: lineOpacity,
-              }}
+              initial={{ opacity: 0, scale: 0 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.5 }}
               className="absolute top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white shadow-md border border-gold/40 flex items-center justify-center text-gold text-sm z-10"
             >
               ⚖
@@ -180,14 +147,12 @@ export default function TeamPreview() {
 
           {/* 4. Mehmet Akif Trabzon Translucent Info Card (Right Inner) */}
           <motion.div
-            style={{
-              x: cardRightX,
-              opacity: cardRightOpacity,
-              rotate: cardRightRotate,
-            }}
-            whileHover={{ y: -6, scale: 1.01 }}
-            transition={{ duration: 0.3 }}
-            className="flex-1 max-w-[340px] h-[440px] glass-effect bg-white/85 backdrop-blur-xl border border-border/50 rounded-3xl p-6 shadow-xl shadow-navy/5 flex flex-col justify-between group overflow-hidden"
+            initial={{ opacity: 0, x: -80 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            whileHover={{ scale: 1.03 }}
+            className="flex-1 max-w-[360px] h-[440px] glass-effect bg-white/90 backdrop-blur-xl border border-border/50 rounded-3xl p-6 shadow-xl shadow-navy/5 flex flex-col justify-between group overflow-hidden cursor-pointer"
           >
             <div>
               <div className="flex items-center justify-between mb-3">
@@ -236,14 +201,12 @@ export default function TeamPreview() {
 
           {/* 5. Mehmet Akif Trabzon Photo Frame (Far-Right Edge) */}
           <motion.div
-            style={{
-              x: photoRightX,
-              rotate: photoRightRotate,
-              scale: photoRightScale,
-            }}
-            whileHover={{ y: -8, rotate: 0, scale: 1.02 }}
-            transition={{ duration: 0.3 }}
-            className="w-64 h-[440px] rounded-3xl overflow-hidden shadow-2xl border-2 border-gold/40 relative group shrink-0 bg-gradient-to-br from-navy to-navy-dark"
+            initial={{ opacity: 0, x: -160 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            whileHover={{ scale: 1.03 }}
+            className="w-64 h-[440px] rounded-3xl overflow-hidden shadow-xl border-2 border-gold/40 relative group shrink-0 bg-gradient-to-br from-navy to-navy-dark cursor-pointer"
           >
             <img
               src={team[1].image}
