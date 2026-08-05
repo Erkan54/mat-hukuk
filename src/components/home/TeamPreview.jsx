@@ -227,7 +227,7 @@ export default function TeamPreview() {
         </div>
 
         {/* Mobile Layout */}
-        <div className="lg:hidden space-y-6">
+        <div className="lg:hidden space-y-5">
           {team.map((lawyer, index) => (
             <motion.div
               key={lawyer.id}
@@ -235,34 +235,55 @@ export default function TeamPreview() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.15 }}
-              className="bg-white rounded-2xl p-6 shadow-sm border border-border/30"
+              className="bg-white rounded-2xl p-5 shadow-sm border border-border/30"
             >
-              <div className="flex items-center gap-4 mb-4">
+              <div className="flex items-start gap-4 mb-4">
                 {lawyer.image ? (
-                  <img
-                    src={lawyer.image}
-                    alt={lawyer.name}
-                    className="w-16 h-16 rounded-xl object-cover object-top border border-gold/30 shrink-0"
-                  />
+                  <div className="w-28 h-36 rounded-xl overflow-hidden border border-gold/30 shrink-0 bg-navy-dark shadow-sm">
+                    <img
+                      src={lawyer.image}
+                      alt={lawyer.name}
+                      className="w-full h-full object-cover object-top"
+                    />
+                  </div>
                 ) : (
-                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-navy to-navy-dark flex items-center justify-center shrink-0">
-                    <span className="font-serif text-lg font-bold text-gold">
+                  <div className="w-28 h-36 rounded-xl bg-gradient-to-br from-navy to-navy-dark flex flex-col items-center justify-center shrink-0 border border-gold/30">
+                    <span className="font-serif text-2xl font-bold text-gold mb-1">
                       {lawyer.name.split(' ').slice(1).map(n => n[0]).join('')}
                     </span>
                   </div>
                 )}
-                <div>
-                  <h3 className="font-serif text-lg font-semibold text-navy">{lawyer.name}</h3>
-                  <p className="text-sm text-gold">{lawyer.title}</p>
+                <div className="flex-1 min-w-0 pt-1">
+                  <span className="inline-block px-2.5 py-0.5 bg-gold/10 text-gold text-[11px] font-semibold rounded-full mb-1.5">
+                    {lawyer.title}
+                  </span>
+                  <h3 className="font-serif text-lg font-bold text-navy leading-snug">{lawyer.name}</h3>
+                  {lawyer.barNumber && lawyer.barNumber !== '-' && (
+                    <p className="text-[11px] text-text-secondary mt-1">{lawyer.barNumber}</p>
+                  )}
+                  <p className="text-xs text-navy font-semibold mt-2.5">{lawyer.experience}</p>
                 </div>
               </div>
+
               <p className="text-sm text-text-secondary leading-relaxed mb-4">{lawyer.shortBio}</p>
-              <div className="flex flex-wrap gap-2">
-                {lawyer.expertise.map((exp) => (
-                  <span key={exp} className="px-3 py-1 bg-navy/5 text-navy text-xs font-medium rounded-full">
-                    {exp}
-                  </span>
-                ))}
+
+              <div className="pt-3 border-t border-border/40 flex items-center justify-between gap-2">
+                <div className="flex flex-wrap gap-1.5 min-w-0">
+                  {lawyer.expertise.map((exp) => (
+                    <span key={exp} className="px-2 py-0.5 bg-navy/5 text-navy text-[11px] font-medium rounded-md">
+                      {exp}
+                    </span>
+                  ))}
+                </div>
+                <Link
+                  to="/ekibimiz"
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-gold hover:text-navy transition-colors shrink-0 ml-auto"
+                >
+                  İncele
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
               </div>
             </motion.div>
           ))}
