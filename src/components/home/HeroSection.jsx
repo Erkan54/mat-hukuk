@@ -42,7 +42,7 @@ export default function HeroSection() {
       </div>
 
       {/* ===== MOBILE HERO ===== */}
-      <div className="relative z-10 lg:hidden w-full px-4 sm:px-6 pt-[55px] pb-12 sm:pt-16 sm:pb-16">
+      <div className="relative z-10 lg:hidden w-full px-4 sm:px-6 pt-[35px] pb-12 sm:pt-12 sm:pb-16">
         <motion.div
           variants={mobileContainer}
           initial="hidden"
@@ -83,34 +83,14 @@ export default function HeroSection() {
           {/* Subtitle */}
           <motion.p
             variants={mobileItem}
-            className="mt-3.5 text-[15px] sm:text-base text-text-secondary leading-relaxed text-center"
+            className="mt-4 text-[15px] sm:text-base text-text-secondary leading-relaxed text-center"
           >
             Ceza, iş, ticaret, aile ve bilişim hukuku alanlarında
             danışmanlık ve dava takibi hizmetleri sunuyoruz.
           </motion.p>
 
-          {/* Stats strip - without emojis, professional & larger typography */}
-          <motion.div variants={mobileItem} className="mt-6 grid grid-cols-3 gap-2.5 sm:gap-3">
-            {[
-              { label: 'Çalışma Alanı', value: '8 Hukuk Dalı' },
-              { label: 'Konum', value: 'Sakarya' },
-              { label: 'Yaklaşım', value: 'Çözüm Odaklı' },
-            ].map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8 + i * 0.1, duration: 0.5 }}
-                className="glass-effect rounded-2xl py-3 px-2 sm:py-3.5 sm:px-3 text-center border border-border/50 shadow-sm"
-              >
-                <div className="text-xs text-text-secondary font-medium tracking-wide">{stat.label}</div>
-                <div className="text-sm sm:text-base font-bold text-navy mt-0.5">{stat.value}</div>
-              </motion.div>
-            ))}
-          </motion.div>
-
           {/* CTA Buttons */}
-          <motion.div variants={mobileItem} className="mt-6 flex flex-col sm:flex-row gap-3">
+          <motion.div variants={mobileItem} className="mt-8 flex flex-col sm:flex-row gap-3">
             <Link
               to="/hizmet-alanlari"
               className="group flex items-center justify-center gap-2 px-6 py-3.5 bg-navy text-white font-semibold rounded-lg hover:bg-navy-dark transition-all duration-300 shadow-lg shadow-navy/20"
@@ -139,8 +119,8 @@ export default function HeroSection() {
           <motion.div
             initial={{ width: 0 }}
             animate={{ width: '60%' }}
-            transition={{ delay: 1.6, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent mx-auto mt-8"
+            transition={{ delay: 1.4, duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            className="h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent mx-auto mt-10"
           />
         </motion.div>
       </div>
