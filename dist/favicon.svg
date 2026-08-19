@@ -1,4 +1,29 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="12" fill="#2F5266"/>
-  <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="serif" font-weight="700" font-size="36" fill="#C8A96A">YD</text>
+  <!-- Rounded Background Card -->
+  <rect width="64" height="64" rx="14" fill="#2F5266"/>
+  
+  <!-- Subtle Terazi / Scale of Justice in Background -->
+  <g fill="#C8A96A" stroke="#C8A96A" opacity="0.22">
+    <!-- Center Pillar -->
+    <rect x="30.5" y="14" width="3" height="38" rx="1.5" stroke="none" />
+    <!-- Base -->
+    <rect x="18" y="49" width="28" height="3" rx="1.5" stroke="none" />
+    <!-- Top Beam -->
+    <rect x="8" y="18" width="48" height="3" rx="1.5" stroke="none" />
+    <!-- Top Finial -->
+    <circle cx="32" cy="14" r="3" stroke="none" />
+    <!-- Left Strings -->
+    <line x1="14" y1="21" x2="9" y2="34" stroke-width="1.2" stroke-linecap="round" />
+    <line x1="14" y1="21" x2="19" y2="34" stroke-width="1.2" stroke-linecap="round" />
+    <!-- Left Dish -->
+    <path d="M6,34 Q6,43 14,43 Q22,43 22,34 Z" stroke="none" />
+    <!-- Right Strings -->
+    <line x1="50" y1="21" x2="45" y2="34" stroke-width="1.2" stroke-linecap="round" />
+    <line x1="50" y1="21" x2="55" y2="34" stroke-width="1.2" stroke-linecap="round" />
+    <!-- Right Dish -->
+    <path d="M42,34 Q42,43 50,43 Q58,43 58,34 Z" stroke="none" />
+  </g>
+
+  <!-- Foreground Text: MA -->
+  <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="32" fill="#C8A96A" letter-spacing="0.5">MA</text>
 </svg>

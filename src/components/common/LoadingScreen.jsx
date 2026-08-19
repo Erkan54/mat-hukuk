@@ -80,19 +80,18 @@ export default function LoadingScreen({ onComplete }) {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <defs>
-                  {/* Liquid fill clip - animates 40% -> 70% -> 90% -> 100% */}
+                  {/* Liquid fill clip - smooth continuous fill */}
                   <clipPath id="liquidFill">
                     <motion.rect
                       x="0"
                       width="120"
                       height="120"
                       initial={{ y: 120 }}
-                      animate={{ y: [120, 72, 36, 12, 0] }}
+                      animate={{ y: 0 }}
                       transition={{
                         duration: 1.7,
-                        times: [0, 0.3, 0.55, 0.8, 1],
-                        ease: ['easeInOut', 'easeInOut', 'easeInOut', 'easeOut'],
                         delay: 0.1,
+                        ease: [0.4, 0, 0.2, 1],
                       }}
                     />
                   </clipPath>
