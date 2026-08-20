@@ -15,14 +15,14 @@ export default function FloatingCallButton() {
       <a
         href={`tel:${formattedTel}`}
         aria-label={`Büromuzu Arayın: ${siteInfo.phone}`}
-        className="group relative flex items-center justify-center w-12 h-12 sm:w-13 sm:h-13 bg-navy text-gold rounded-full shadow-lg shadow-navy/30 border border-gold/40 hover:border-gold hover:bg-navy-dark hover:scale-105 active:scale-95 transition-all duration-300 backdrop-blur-sm"
+        className="group relative flex items-center justify-center w-14 h-14 sm:w-[60px] sm:h-[60px] bg-navy text-gold rounded-full shadow-xl shadow-navy/30 border-2 border-gold/40 hover:border-gold hover:bg-navy-dark hover:scale-105 active:scale-95 transition-all duration-300 backdrop-blur-sm"
       >
         {/* Subtle pulsing gold ring */}
         <span className="absolute inset-0 rounded-full bg-gold/20 animate-ping opacity-60 pointer-events-none" />
 
         {/* Phone Icon */}
         <svg
-          className="w-5 h-5 text-gold group-hover:scale-110 transition-transform duration-300"
+          className="w-6 h-6 text-gold group-hover:scale-110 transition-transform duration-300"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
