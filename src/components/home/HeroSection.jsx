@@ -42,7 +42,7 @@ export default function HeroSection() {
       </div>
 
       {/* ===== MOBILE HERO ===== */}
-      <div className="relative z-10 lg:hidden w-full px-4 sm:px-6 pt-[35px] pb-12 sm:pt-12 sm:pb-16">
+      <div className="relative z-10 lg:hidden w-full px-4 sm:px-6 pt-[85px] pb-16 sm:pt-24 sm:pb-20">
         <motion.div
           variants={mobileContainer}
           initial="hidden"
@@ -50,9 +50,10 @@ export default function HeroSection() {
           className="max-w-lg mx-auto"
         >
 
+
           {/* Badge */}
-          <motion.div variants={mobileItem} className="flex justify-center mb-4">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-navy/5 rounded-full">
+          <motion.div variants={mobileItem} className="flex justify-center mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-navy/5 rounded-full">
               <motion.span
                 animate={{ scale: [1, 1.3, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
@@ -83,11 +84,38 @@ export default function HeroSection() {
           {/* Subtitle */}
           <motion.p
             variants={mobileItem}
-            className="mt-4 text-[15px] sm:text-base text-text-secondary leading-relaxed text-center"
+            className="mt-5 text-base text-text-secondary leading-relaxed text-center"
           >
             Ceza, iş, ticaret, aile ve bilişim hukuku alanlarında
             danışmanlık ve dava takibi hizmetleri sunuyoruz.
           </motion.p>
+
+          {/* Animated stats strip */}
+          <motion.div variants={mobileItem} className="mt-8 grid grid-cols-3 gap-3">
+            {[
+              { icon: '⚖️', label: 'Çalışma Alanı', value: '8 Dal' },
+              { icon: '📍', label: 'Konum', value: 'Sakarya' },
+              { icon: '🎯', label: 'Yaklaşım', value: 'Çözüm Odaklı' },
+            ].map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.0 + i * 0.15, duration: 0.5 }}
+                className="glass-effect rounded-xl p-3 text-center"
+              >
+                <motion.span
+                  animate={{ y: [0, -3, 0] }}
+                  transition={{ duration: 2 + i * 0.5, repeat: Infinity, ease: 'easeInOut' }}
+                  className="text-lg block"
+                >
+                  {stat.icon}
+                </motion.span>
+                <div className="text-[10px] text-text-secondary mt-1">{stat.label}</div>
+                <div className="text-xs font-semibold text-navy">{stat.value}</div>
+              </motion.div>
+            ))}
+          </motion.div>
 
           {/* CTA Buttons */}
           <motion.div variants={mobileItem} className="mt-8 flex flex-col sm:flex-row gap-3">
@@ -119,7 +147,7 @@ export default function HeroSection() {
           <motion.div
             initial={{ width: 0 }}
             animate={{ width: '60%' }}
-            transition={{ delay: 1.4, duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ delay: 1.8, duration: 1, ease: [0.22, 1, 0.36, 1] }}
             className="h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent mx-auto mt-10"
           />
         </motion.div>
