@@ -19,6 +19,7 @@ import Kvkk from './pages/Kvkk'
 import Privacy from './pages/Privacy'
 import Cookies from './pages/Cookies'
 import Disclaimer from './pages/Disclaimer'
+import FloatingCallButton from './components/common/FloatingCallButton'
 import NotFound from './pages/NotFound'
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
+      <FloatingCallButton />
     </>
   )
 }
