@@ -5,11 +5,27 @@ export default function LoadingScreen({ onComplete }) {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
+    const originalBodyOverflow = document.body.style.overflow;
+    const originalHtmlOverflow = document.documentElement.style.overflow;
+
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+    window.scrollTo(0, 0);
+
     const timer = setTimeout(() => {
       setIsVisible(false);
-      setTimeout(() => onComplete?.(), 600);
+      setTimeout(() => {
+        document.body.style.overflow = originalBodyOverflow;
+        document.documentElement.style.overflow = originalHtmlOverflow;
+        onComplete?.();
+      }, 600);
     }, 2400);
-    return () => clearTimeout(timer);
+
+    return () => {
+      clearTimeout(timer);
+      document.body.style.overflow = originalBodyOverflow;
+      document.documentElement.style.overflow = originalHtmlOverflow;
+    };
   }, [onComplete]);
 
   return (
@@ -19,7 +35,7 @@ export default function LoadingScreen({ onComplete }) {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, y: -30 }}
           transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
-          className="fixed inset-0 z-[9999] flex items-center justify-center"
+          className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden touch-none overscroll-none select-none"
           style={{ background: 'linear-gradient(135deg, #1E3A4C 0%, #2F5266 50%, #1E3A4C 100%)' }}
         >
           {/* Central ambient gold glow */}
