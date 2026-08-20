@@ -90,31 +90,55 @@ export default function HeroSection() {
             danışmanlık ve dava takibi hizmetleri sunuyoruz.
           </motion.p>
 
-          {/* Animated stats strip */}
-          <motion.div variants={mobileItem} className="mt-8 grid grid-cols-3 gap-3">
-            {[
-              { icon: '⚖️', label: 'Çalışma Alanı', value: '8 Dal' },
-              { icon: '📍', label: 'Konum', value: 'Sakarya' },
-              { icon: '🎯', label: 'Yaklaşım', value: 'Çözüm Odaklı' },
-            ].map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.0 + i * 0.15, duration: 0.5 }}
-                className="glass-effect rounded-xl p-3 text-center"
-              >
-                <motion.span
-                  animate={{ y: [0, -3, 0] }}
-                  transition={{ duration: 2 + i * 0.5, repeat: Infinity, ease: 'easeInOut' }}
-                  className="text-lg block"
-                >
-                  {stat.icon}
-                </motion.span>
-                <div className="text-[10px] text-text-secondary mt-1">{stat.label}</div>
-                <div className="text-xs font-semibold text-navy">{stat.value}</div>
-              </motion.div>
-            ))}
+          {/* Premium Unified Trust Strip (Mobile) */}
+          <motion.div
+            variants={mobileItem}
+            className="mt-7 bg-white/75 backdrop-blur-md border border-gold/25 rounded-2xl p-3 sm:p-4 shadow-sm shadow-navy/5 flex items-center justify-between"
+          >
+            {/* Item 1 */}
+            <div className="flex-1 flex flex-col items-center text-center px-1">
+              <div className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center mb-1 text-gold">
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/>
+                  <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/>
+                  <path d="M7 21h10"/>
+                  <path d="M12 3v18"/>
+                  <path d="M3 7h18"/>
+                </svg>
+              </div>
+              <span className="text-[10px] uppercase tracking-wider text-text-secondary font-medium">Uzmanlık</span>
+              <span className="text-xs font-bold text-navy mt-0.5">8 Hukuk Dalı</span>
+            </div>
+
+            {/* Divider 1 */}
+            <div className="w-px h-8 bg-gradient-to-b from-transparent via-gold/35 to-transparent shrink-0" />
+
+            {/* Item 2 */}
+            <div className="flex-1 flex flex-col items-center text-center px-1">
+              <div className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center mb-1 text-gold">
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <span className="text-[10px] uppercase tracking-wider text-text-secondary font-medium">Merkez</span>
+              <span className="text-xs font-bold text-navy mt-0.5">Sakarya</span>
+            </div>
+
+            {/* Divider 2 */}
+            <div className="w-px h-8 bg-gradient-to-b from-transparent via-gold/35 to-transparent shrink-0" />
+
+            {/* Item 3 */}
+            <div className="flex-1 flex flex-col items-center text-center px-1">
+              <div className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center mb-1 text-gold">
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
+                  <path d="m9 12 2 2 4-4"/>
+                </svg>
+              </div>
+              <span className="text-[10px] uppercase tracking-wider text-text-secondary font-medium">Yaklaşım</span>
+              <span className="text-xs font-bold text-navy mt-0.5">Çözüm Odaklı</span>
+            </div>
           </motion.div>
 
           {/* CTA Buttons */}
