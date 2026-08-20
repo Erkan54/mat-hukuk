@@ -228,7 +228,7 @@ export default function TeamPreview() {
 
         {/* Mobile Layout */}
         <div className="lg:hidden space-y-5">
-          {team.map((lawyer, index) => (
+          {team.filter(lawyer => lawyer.role !== 'assistant' && lawyer.name !== 'Eyüp Ensar Sayılı').map((lawyer, index) => (
             <motion.div
               key={lawyer.id}
               initial={{ opacity: 0, y: 30 }}
