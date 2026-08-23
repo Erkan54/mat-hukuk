@@ -87,8 +87,8 @@ export default function AboutPreview() {
             </motion.div>
           </div>
 
-          {/* Right - Principle Cards */}
-          <div className="space-y-6">
+          {/* Right - Principle Cards (Desktop Only) */}
+          <div className="hidden lg:block space-y-6">
             {principles.map((item, index) => (
               <motion.div
                 key={item.number}
