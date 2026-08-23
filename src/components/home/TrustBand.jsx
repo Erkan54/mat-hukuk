@@ -1,6 +1,6 @@
 export default function TrustBand() {
   return (
-    <section className="py-8 md:py-10 bg-white border-y border-border/40 relative overflow-hidden bg-watermark">
+    <section className="hidden md:block py-8 md:py-10 bg-white border-y border-border/40 relative overflow-hidden bg-watermark">
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3 sm:gap-6 md:gap-10">
           
