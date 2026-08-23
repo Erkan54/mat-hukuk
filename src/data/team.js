@@ -51,6 +51,22 @@ export const team = [
   },
   {
     id: 4,
+    name: 'Av. Furkan Kalaycı',
+    title: 'Avukat',
+    role: 'lawyer',
+    image: '/images/lawyer5.jpg',
+    shortBio: 'Marmara Üniversitesi Hukuk Fakültesi mezunudur. Hukuki danışmanlık, uyuşmazlık çözümü ve dava takibi süreçlerinde müvekkillerine etkin hukuki destek sunmaktadır.',
+    expertise: ['Ceza Hukuku', 'Borçlar Hukuku', 'Ticaret Hukuku', 'İcra ve İflas Hukuku'],
+    education: [
+      'Marmara Üniversitesi Hukuk Fakültesi (Lisans)'
+    ],
+    experience: 'Avukat',
+    barNumber: 'Sakarya Barosu',
+    languages: ['Türkçe', 'İngilizce'],
+    publications: 0
+  },
+  {
+    id: 5,
     name: 'Eyüp Ensar Sayılı',
     title: 'Asistan Avukat',
     role: 'assistant',
