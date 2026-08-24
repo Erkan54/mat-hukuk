@@ -44,7 +44,15 @@ export default function ContactCTA() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-text-primary text-sm">Adres</h4>
-                  <p className="text-sm text-text-secondary mt-1">{siteInfo.address}</p>
+                  <a
+                    href={siteInfo.googleMapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-text-secondary hover:text-navy hover:underline mt-1 block transition-colors"
+                    title="Google Haritalar'da Görüntüle"
+                  >
+                    {siteInfo.address}
+                  </a>
                 </div>
               </div>
 
@@ -101,18 +109,34 @@ export default function ContactCTA() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="bg-cream rounded-2xl p-2 shadow-lg border border-border/30"
+            className="bg-cream rounded-2xl p-3 shadow-lg border border-border/30"
           >
-            <div className="rounded-xl overflow-hidden">
+            <div className="flex items-center justify-between mb-2.5 px-2">
+              <span className="text-xs font-semibold text-text-primary flex items-center gap-1.5">
+                <span>📍</span> MAT & ALPGÜL Hukuk
+              </span>
+              <a
+                href={siteInfo.googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[11px] font-semibold text-navy hover:text-gold flex items-center gap-1 transition-colors py-1 px-2 rounded bg-white border border-border/40 hover:border-gold/50"
+              >
+                <span>Haritada Aç</span>
+                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
+            <div className="rounded-xl overflow-hidden border border-border/20">
               <iframe
                 src={siteInfo.mapEmbedUrl}
                 width="100%"
-                height="380"
+                height="360"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Büro Konumu"
+                title="MAT & ALPGÜL Hukuk Büro Konumu"
               />
             </div>
           </motion.div>

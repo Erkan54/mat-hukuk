@@ -9,7 +9,7 @@ export const team = [
     bio: 'Sakarya doğumludur. Lisans eğitimini İstanbul Medeniyet Üniversitesi Hukuk Fakültesi\'nde tamamlamıştır. Üniversite ve meslek hayatı boyunca birçok sivil toplum kuruluşu, kulüp yöneticiliği ve hukuk konferanslarında konuşmacı olarak yer almıştır. İstanbul\'da kurumsal hukuk bürolarında edindiği tecrübenin ardından Sakarya\'da MAT & ALPGÜL Hukuk Danışmanlık bürosunu kurmuştur. Ağırlıklı olarak Ceza Hukuku, Aile Hukuku, Gayrimenkul Hukuku ve Şirketler Hukuku alanlarında hukuki danışmanlık ve dava takibi hizmeti sunmaktadır.',
     expertise: ['Ceza Hukuku', 'Aile Hukuku', 'Gayrimenkul Hukuku', 'Şirketler Hukuku'],
     education: [
-      'İstanbul Medeniyet Üniversitesi Hukuk Fakültesi (Lisans - 2021)'
+      'İstanbul Medeniyet Üniversitesi Hukuk Fakültesi (Lisans)'
     ],
     experience: 'Avukat',
     barNumber: 'Sakarya Barosu',
