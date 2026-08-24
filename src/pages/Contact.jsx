@@ -134,33 +134,16 @@ export default function Contact() {
               </div>
 
               {/* Map */}
-              <div className="bg-white rounded-2xl p-4 border border-border/30 shadow-sm">
-                <div className="flex items-center justify-between mb-3 px-1">
-                  <div className="flex items-center gap-2">
-                    <span className="text-lg">📍</span>
-                    <span className="font-medium text-sm text-text-primary">Ofis Konumu (Google Haritalar)</span>
-                  </div>
-                  <a
-                    href={siteInfo.googleMapsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-navy hover:text-gold transition-colors py-1 px-2.5 rounded-lg bg-navy/5 hover:bg-navy/10"
-                  >
-                    <span>Haritada Aç & Yol Tarifi</span>
-                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                  </a>
-                </div>
-                <div className="rounded-xl overflow-hidden border border-border/20">
+              <div className="bg-white rounded-2xl p-2 border border-border/30 shadow-sm">
+                <div className="rounded-xl overflow-hidden">
                   <iframe
                     src={siteInfo.mapEmbedUrl}
                     width="100%"
-                    height="320"
+                    height="300"
                     style={{ border: 0 }}
                     allowFullScreen
                     loading="lazy"
-                    title="MAT & ALPGÜL Hukuk Konumu"
+                    title="Büro Konumu"
                   />
                 </div>
               </div>
