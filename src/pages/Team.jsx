@@ -70,7 +70,7 @@ export default function Team() {
 
                   {/* Info */}
                   <div className="lg:col-span-2 p-8 lg:p-12">
-                    <p className="text-text-secondary leading-relaxed mb-8">{lawyer.shortBio}</p>
+                    <p className="text-text-secondary leading-relaxed mb-8">{lawyer.bio || lawyer.shortBio}</p>
 
                     <div className="grid sm:grid-cols-2 gap-8">
                       <div>

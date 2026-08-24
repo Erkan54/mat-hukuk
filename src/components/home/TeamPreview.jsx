@@ -90,7 +90,7 @@ export default function TeamPreview() {
                 {team[0].name}
               </h3>
 
-              <p className="text-sm text-text-secondary leading-relaxed mb-6">
+              <p className="text-sm text-text-secondary leading-relaxed mb-6 line-clamp-4">
                 {team[0].shortBio}
               </p>
 
@@ -164,7 +164,7 @@ export default function TeamPreview() {
                 {team[1].name}
               </h3>
 
-              <p className="text-sm text-text-secondary leading-relaxed mb-6">
+              <p className="text-sm text-text-secondary leading-relaxed mb-6 line-clamp-4">
                 {team[1].shortBio}
               </p>
 
@@ -265,7 +265,7 @@ export default function TeamPreview() {
                 </div>
               </div>
 
-              <p className="text-sm text-text-secondary leading-relaxed mb-4">{lawyer.shortBio}</p>
+              <p className="text-sm text-text-secondary leading-relaxed mb-4 line-clamp-4">{lawyer.shortBio}</p>
 
               <div className="pt-3 border-t border-border/40 flex items-center justify-between gap-2">
                 <div className="flex flex-wrap gap-1.5 min-w-0">
