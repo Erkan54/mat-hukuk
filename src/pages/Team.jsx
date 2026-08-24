@@ -54,14 +54,16 @@ export default function Team() {
                       </div>
                     ) : (
                       <div className="text-center">
-                        <div className="w-32 h-32 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <div className="w-32 h-32 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6 border-2 border-gold/40">
                           <span className="font-serif text-4xl font-bold text-gold">
-                            {lawyer.name.split(' ').slice(1).map(n => n[0]).join('')}
+                            {(lawyer.name.startsWith('Av.') ? lawyer.name.split(' ').slice(1) : lawyer.name.split(' ')).map(n => n[0]).join('')}
                           </span>
                         </div>
                         <h3 className="font-serif text-2xl font-bold text-white">{lawyer.name}</h3>
                         <p className="text-gold mt-2 font-medium">{lawyer.title}</p>
-                        <p className="text-white/50 text-sm mt-2">{lawyer.barNumber}</p>
+                        {lawyer.barNumber && lawyer.barNumber !== '-' && (
+                          <p className="text-white/50 text-sm mt-2">{lawyer.barNumber}</p>
+                        )}
                       </div>
                     )}
                   </div>

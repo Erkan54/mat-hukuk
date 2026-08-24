@@ -67,11 +67,11 @@ export const team = [
   },
   {
     id: 5,
-    name: 'Eyüp Ensar Sayılı',
-    title: 'Asistan Avukat',
+    name: 'Eyüp Ensar',
+    title: 'Öğrenci Asistan',
     role: 'assistant',
-    image: '/images/lawyer3.jpg',
-    shortBio: 'İstanbul Medeniyet Üniversitesi Hukuk Fakültesi öğrencisi. MAT & ALPGÜL Hukuk Bürosu bünyesinde Asistan Avukat olarak çalışmalarına devam etmektedir.',
+    image: null,
+    shortBio: 'İstanbul Medeniyet Üniversitesi Hukuk Fakültesi öğrencisi. MAT & ALPGÜL Hukuk Bürosu bünyesinde Öğrenci Asistan olarak çalışmalarına devam etmektedir.',
     expertise: ['Hukuki Araştırma', 'Süreç Takibi', 'Bilişim ve KVKK'],
     education: [
       'İstanbul Medeniyet Üniversitesi Hukuk Fakültesi (Devam Ediyor)'

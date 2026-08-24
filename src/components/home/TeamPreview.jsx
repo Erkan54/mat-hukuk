@@ -228,7 +228,7 @@ export default function TeamPreview() {
 
         {/* Mobile Layout */}
         <div className="lg:hidden space-y-5">
-          {team.filter(lawyer => lawyer.role !== 'assistant' && lawyer.name !== 'Eyüp Ensar Sayılı' && !lawyer.name.includes('Furkan Kalaycı')).map((lawyer, index) => (
+          {team.filter(lawyer => lawyer.role !== 'assistant' && !lawyer.name.includes('Eyüp Ensar') && !lawyer.name.includes('Furkan Kalaycı')).map((lawyer, index) => (
             <motion.div
               key={lawyer.id}
               initial={{ opacity: 0, y: 30 }}
@@ -249,7 +249,7 @@ export default function TeamPreview() {
                 ) : (
                   <div className="w-28 h-36 rounded-xl bg-gradient-to-br from-navy to-navy-dark flex flex-col items-center justify-center shrink-0 border border-gold/30">
                     <span className="font-serif text-2xl font-bold text-gold mb-1">
-                      {lawyer.name.split(' ').slice(1).map(n => n[0]).join('')}
+                      {(lawyer.name.startsWith('Av.') ? lawyer.name.split(' ').slice(1) : lawyer.name.split(' ')).map(n => n[0]).join('')}
                     </span>
                   </div>
                 )}
