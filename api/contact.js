@@ -1,4 +1,4 @@
-const WEB3FORMS_ACCESS_KEY = 'af4ada9f-beb9-4a10-8995-cf1ff3236478';
+const WEB3FORMS_ACCESS_KEY = '6ef8ece9-7dd3-4fa6-a72e-7ff8c78884fc';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {

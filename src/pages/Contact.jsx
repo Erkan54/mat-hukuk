@@ -20,7 +20,7 @@ export default function Contact() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          access_key: 'af4ada9f-beb9-4a10-8995-cf1ff3236478',
+          access_key: '6ef8ece9-7dd3-4fa6-a72e-7ff8c78884fc',
           subject: `İletişim Formu: ${formData.subject || 'Yeni Mesaj'} - ${formData.name}`,
           from_name: formData.name,
           replyto: formData.email,
