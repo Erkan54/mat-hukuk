@@ -173,7 +173,7 @@ export default function LoadingScreen({ onComplete }) {
               className="mt-8 text-center"
             >
               <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white tracking-wide">
-                MAT & ALPGÜL
+                MAT <span className="text-gold">&</span> ALPGÜL
               </h2>
               <motion.div
                 initial={{ width: 0 }}

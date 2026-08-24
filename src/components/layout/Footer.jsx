@@ -26,7 +26,7 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <Link to="/" className="inline-block mb-4">
               <span className="font-serif text-2xl font-bold text-white">
-                MAT & ALPGÜL
+                MAT <span className="text-gold">&</span> ALPGÜL
               </span>
               <span className="block text-[10px] tracking-[0.3em] uppercase text-white/60 mt-0.5">
                 Hukuk Danışmanlık
