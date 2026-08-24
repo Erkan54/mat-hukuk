@@ -1,0 +1,9 @@
+# Robots.txt for MAT & ALPGÜL Hukuk Bürosu
+User-agent: *
+Allow: /
+
+# Disallow internal API routes
+Disallow: /api/
+
+# Sitemaps
+Sitemap: https://mat-hukuk.vercel.app/sitemap.xml
