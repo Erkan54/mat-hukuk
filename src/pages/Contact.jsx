@@ -83,15 +83,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-text-primary">Adres</h3>
-                    <a
-                      href={siteInfo.googleMapsUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm text-text-secondary hover:text-navy hover:underline mt-1 block transition-colors"
-                      title="Google Haritalar'da Görüntüle"
-                    >
-                      {siteInfo.address}
-                    </a>
+                    <p className="text-sm text-text-secondary mt-1">{siteInfo.address}</p>
                   </div>
                 </div>
 
