@@ -5,13 +5,13 @@ export const team = [
     title: 'Kurucu Ortak',
     role: 'founder',
     image: '/images/lawyer1.png',
-    shortBio: 'Ceza hukuku, ticaret hukuku ve iş hukuku alanlarında mesleki deneyime sahiptir. Sakarya Barosu\'na kayıtlı olarak avukatlık mesleğini icra etmektedir.',
-    expertise: ['Ceza Hukuku', 'Ticaret Hukuku', 'İş Hukuku', 'Şirketler Hukuku'],
+    shortBio: 'Sakarya doğumludur. Lisans eğitimini İstanbul Medeniyet Üniversitesi Hukuk Fakültesi\'nde tamamlamıştır. Üniversite ve meslek hayatı boyunca birçok sivil toplum kuruluşu, kulüp yöneticiliği ve hukuk konferanslarında konuşmacı olarak yer almıştır. İstanbul\'da kurumsal hukuk bürolarında edindiği tecrübenin ardından Sakarya\'da MAT & ALPGÜL Hukuk Danışmanlık bürosunu kurmuştur. Ağırlıklı olarak Ceza Hukuku, Aile Hukuku, Gayrimenkul Hukuku ve Şirketler Hukuku alanlarında hukuki danışmanlık ve dava takibi hizmeti sunmaktadır.',
+    expertise: ['Ceza Hukuku', 'Aile Hukuku', 'Gayrimenkul Hukuku', 'Şirketler Hukuku'],
     education: [
-      'Hukuk Fakültesi - Lisans'
+      'İstanbul Medeniyet Üniversitesi Hukuk Fakültesi (Lisans - 2021)'
     ],
     experience: 'Avukat',
-    barNumber: 'Sakarya Barosu - 1939',
+    barNumber: 'Sakarya Barosu',
     languages: ['Türkçe', 'İngilizce'],
     publications: 6
   },
