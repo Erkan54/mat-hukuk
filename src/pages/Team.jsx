@@ -84,17 +84,19 @@ export default function Team() {
                         </div>
                       </div>
 
-                      <div>
-                        <h4 className="text-xs uppercase tracking-wider text-gold font-semibold mb-3">Eğitim</h4>
-                        <ul className="space-y-2">
-                          {lawyer.education.map((edu) => (
-                            <li key={edu} className="text-sm text-text-secondary flex items-start gap-2">
-                              <span className="w-1.5 h-1.5 bg-gold rounded-full mt-1.5 shrink-0" />
-                              {edu}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                      {lawyer.education && lawyer.education.length > 0 && (
+                        <div>
+                          <h4 className="text-xs uppercase tracking-wider text-gold font-semibold mb-3">Eğitim</h4>
+                          <ul className="space-y-2">
+                            {lawyer.education.map((edu) => (
+                              <li key={edu} className="text-sm text-text-secondary flex items-start gap-2">
+                                <span className="w-1.5 h-1.5 bg-gold rounded-full mt-1.5 shrink-0" />
+                                {edu}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
 
                       <div>
                         <h4 className="text-xs uppercase tracking-wider text-gold font-semibold mb-3">Diller</h4>

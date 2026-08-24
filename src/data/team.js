@@ -12,7 +12,7 @@ export const team = [
     ],
     experience: 'Avukat',
     barNumber: 'Sakarya Barosu - 1939',
-    languages: ['Türkçe', 'İngilizce', 'İspanyolca'],
+    languages: ['Türkçe', 'İngilizce'],
     publications: 6
   },
   {
@@ -33,52 +33,16 @@ export const team = [
   },
   {
     id: 3,
-    name: 'Av. Mustafa İpek',
-    title: 'Avukat',
-    role: 'lawyer',
-    image: '/images/lawyer4.jpg',
-    shortBio: 'İstanbul\'da doğmuştur. Lisans eğitimine Uludağ Üniversitesi Hukuk Fakültesinde başlayıp İstanbul Medeniyet Üniversitesinde tamamlamıştır. Pek çok sivil toplum kuruluşunda ve üniversite kulübünde görev almıştır. İcra Hukuku, Ceza Hukuku ve Ticaret Hukuku alanlarında çalışmalarını sürdürmektedir. Hukuk eğitiminin yanı sıra başladığı Tarih eğitimine de halen devam etmektedir.',
-    expertise: ['İcra ve İflas Hukuku', 'Ceza Hukuku', 'Ticaret Hukuku'],
-    education: [
-      'İstanbul Medeniyet Üniversitesi Hukuk Fakültesi (Lisans)',
-      'Uludağ Üniversitesi Hukuk Fakültesi',
-      'Tarih Bölümü (Lisans - Devam Ediyor)'
-    ],
-    experience: 'Avukat',
-    barNumber: 'Sakarya Barosu',
-    languages: ['Türkçe', 'İngilizce', 'İspanyolca'],
-    publications: 0
-  },
-  {
-    id: 4,
-    name: 'Av. Furkan Kalaycı',
-    title: 'Avukat',
-    role: 'lawyer',
-    image: '/images/lawyer5.jpg',
-    shortBio: 'Marmara Üniversitesi Hukuk Fakültesi mezunudur. Hukuki danışmanlık, uyuşmazlık çözümü ve dava takibi süreçlerinde müvekkillerine etkin hukuki destek sunmaktadır.',
-    expertise: ['Ceza Hukuku', 'Borçlar Hukuku', 'Ticaret Hukuku', 'İcra ve İflas Hukuku'],
-    education: [
-      'Marmara Üniversitesi Hukuk Fakültesi (Lisans)'
-    ],
-    experience: 'Avukat',
-    barNumber: 'Sakarya Barosu',
-    languages: ['Türkçe', 'İngilizce'],
-    publications: 0
-  },
-  {
-    id: 5,
     name: 'Eyüp Ensar',
-    title: 'Öğrenci Asistan',
+    title: 'Asistan',
     role: 'assistant',
     image: null,
-    shortBio: 'İstanbul Medeniyet Üniversitesi Hukuk Fakültesi öğrencisi. MAT & ALPGÜL Hukuk Bürosu bünyesinde Öğrenci Asistan olarak çalışmalarına devam etmektedir.',
+    shortBio: 'MAT & ALPGÜL Hukuk Bürosu bünyesinde Asistan olarak çalışmalarına devam etmektedir.',
     expertise: ['Hukuki Araştırma', 'Süreç Takibi', 'Bilişim ve KVKK'],
-    education: [
-      'İstanbul Medeniyet Üniversitesi Hukuk Fakültesi (Devam Ediyor)'
-    ],
-    experience: 'Öğrenci / Asistan',
+    education: [],
+    experience: 'Asistan',
     barNumber: '-',
-    languages: ['Türkçe', 'İngilizce', 'Arnavutça', 'Kürtçe'],
+    languages: ['Türkçe', 'İngilizce', 'Arnavutça'],
     publications: 0
   }
 ];
