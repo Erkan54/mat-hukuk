@@ -1,0 +1,19 @@
+{
+  "name": "MAT & ALPGÜL Hukuk Danışmanlık",
+  "short_name": "MAT & ALPGÜL",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#2F5266",
+  "background_color": "#2F5266",
+  "display": "standalone"
+}
