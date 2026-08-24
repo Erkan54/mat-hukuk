@@ -1,6 +1,7 @@
 export const practiceAreas = [
   {
-    id: 'ceza-hukuku',
+    id: 'sakarya-ceza-avukati',
+    legacyIds: ['ceza-hukuku'],
     title: 'Sakarya Ceza Avukatı',
     icon: '⚖️',
     shortDescription: 'Ceza davaları, soruşturma ve kovuşturma süreçlerinde hukuki destek ve dava takibi.',
@@ -17,7 +18,8 @@ export const practiceAreas = [
     ]
   },
   {
-    id: 'aile-hukuku',
+    id: 'sakarya-bosanma-ve-aile-avukati',
+    legacyIds: ['aile-hukuku', 'sakarya-aile-avukati', 'sakarya-bosanma-avukati'],
     title: 'Sakarya Boşanma ve Aile Avukatı',
     icon: '👨‍👩‍👧‍👦',
     shortDescription: 'Anlaşmalı ve çekişmeli boşanma, velayet, nafaka ve mal paylaşımı davaları.',
@@ -34,7 +36,8 @@ export const practiceAreas = [
     ]
   },
   {
-    id: 'is-hukuku',
+    id: 'sakarya-is-avukati',
+    legacyIds: ['is-hukuku'],
     title: 'Sakarya İş Avukatı',
     icon: '💼',
     shortDescription: 'İşçi-işveren uyuşmazlıkları, kıdem ihbar tazminatı ve işe iade davaları.',
@@ -51,7 +54,8 @@ export const practiceAreas = [
     ]
   },
   {
-    id: 'ticaret-hukuku',
+    id: 'sakarya-ticaret-avukati',
+    legacyIds: ['ticaret-hukuku'],
     title: 'Sakarya Ticaret Avukatı',
     icon: '📊',
     shortDescription: 'Ticari uyuşmazlıklar, sözleşme hukuku ve ticari dava takibi.',
@@ -67,7 +71,8 @@ export const practiceAreas = [
     ]
   },
   {
-    id: 'sirketler-hukuku',
+    id: 'sakarya-sirketler-avukati',
+    legacyIds: ['sirketler-hukuku', 'sakarya-sirket-avukati'],
     title: 'Sakarya Şirketler Avukatı',
     icon: '🏢',
     shortDescription: 'Şirket kuruluşu, birleşme-devralma ve kurumsal yönetim danışmanlığı.',
@@ -83,7 +88,8 @@ export const practiceAreas = [
     ]
   },
   {
-    id: 'gayrimenkul-hukuku',
+    id: 'sakarya-gayrimenkul-avukati',
+    legacyIds: ['gayrimenkul-hukuku'],
     title: 'Sakarya Gayrimenkul Avukatı',
     icon: '🏠',
     shortDescription: 'Taşınmaz alım-satım, kira uyuşmazlıkları, tapu iptal ve tescil davaları.',
@@ -99,7 +105,8 @@ export const practiceAreas = [
     ]
   },
   {
-    id: 'icra-iflas-hukuku',
+    id: 'sakarya-icra-avukati',
+    legacyIds: ['icra-iflas-hukuku', 'sakarya-icra-iflas-avukati'],
     title: 'Sakarya İcra Avukatı',
     icon: '📋',
     shortDescription: 'Alacak takibi, icra işlemleri, borca itiraz ve iflas süreçleri.',
@@ -115,7 +122,8 @@ export const practiceAreas = [
     ]
   },
   {
-    id: 'bilisim-kvkk-hukuku',
+    id: 'sakarya-bilisim-ve-kvkk-avukati',
+    legacyIds: ['bilisim-kvkk-hukuku', 'sakarya-bilisim-avukati'],
     title: 'Sakarya Bilişim ve KVKK Avukatı',
     icon: '🔒',
     shortDescription: 'Kişisel verilerin korunması (KVKK) uyum süreçleri ve bilişim hukuku.',

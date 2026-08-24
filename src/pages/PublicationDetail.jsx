@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import PageHero from '../components/common/PageHero';
 import { publications } from '../data/publications';
@@ -6,6 +7,12 @@ import { publications } from '../data/publications';
 export default function PublicationDetail() {
   const { slug } = useParams();
   const publication = publications.find(p => p.slug === slug);
+
+  useEffect(() => {
+    if (publication) {
+      document.title = `${publication.title} | Sakarya Avukat - MAT & ALPGÜL Hukuk`;
+    }
+  }, [publication]);
 
   if (!publication) {
     return (

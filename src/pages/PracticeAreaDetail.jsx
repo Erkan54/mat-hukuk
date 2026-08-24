@@ -1,11 +1,18 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import PageHero from '../components/common/PageHero';
 import { practiceAreas } from '../data/practiceAreas';
 
 export default function PracticeAreaDetail() {
   const { id } = useParams();
-  const area = practiceAreas.find(a => a.id === id);
+  const area = practiceAreas.find(a => a.id === id || a.legacyIds?.includes(id));
+
+  useEffect(() => {
+    if (area) {
+      document.title = `${area.title} | Sakarya Avukat - MAT & ALPGÜL Hukuk`;
+    }
+  }, [area]);
 
   if (!area) {
     return (
@@ -19,7 +26,12 @@ export default function PracticeAreaDetail() {
     );
   }
 
-  const otherAreas = practiceAreas.filter(a => a.id !== id).slice(0, 3);
+  // Canonical redirect if accessed by legacy slug
+  if (id !== area.id) {
+    return <Navigate to={`/hizmet-alanlari/${area.id}`} replace />;
+  }
+
+  const otherAreas = practiceAreas.filter(a => a.id !== area.id).slice(0, 3);
 
   return (
     <main>
