@@ -6,4 +6,4 @@ Allow: /
 Disallow: /api/
 
 # Sitemaps
-Sitemap: https://sakaryamatalpgulhukuk.com/sitemap.xml
+Sitemap: https://www.sakaryamatalpgulhukuk.com/sitemap.xml
