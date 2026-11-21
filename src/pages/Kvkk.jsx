@@ -1,5 +1,6 @@
 import PageHero from '../components/common/PageHero';
 import { motion } from 'framer-motion';
+import { siteInfo } from '../data/siteInfo';
 
 export default function Kvkk() {
   return (
@@ -17,12 +18,12 @@ export default function Kvkk() {
             <div className="space-y-6 text-text-secondary leading-relaxed text-sm">
               <h2 className="font-serif text-2xl font-bold text-text-primary">Kişisel Verilerin Korunması ve İşlenmesi Aydınlatma Metni</h2>
               <p>
-                <strong>MAT Hukuk Danışmanlık</strong> olarak, kişisel verilerinizin güvenliği ve gizliliği bizim için en önemli önceliklerden biridir. 6698 sayılı Kişisel Verilerin Korunması Kanunu ("<strong>KVKK</strong>") kapsamında, "Veri Sorumlusu" sıfatıyla, tarafımıza sağladığınız kişisel verilerin ne şekilde, hangi amaçlarla ve hangi hukuki sebeplere dayanarak işlendiği, kimlere aktarılabileceği ve bu kapsamdaki haklarınız konusunda sizi bilgilendirmek isteriz.
+                <strong>{siteInfo.name}</strong> olarak, kişisel verilerinizin güvenliği ve gizliliği bizim için en önemli önceliklerden biridir. 6698 sayılı Kişisel Verilerin Korunması Kanunu ("<strong>KVKK</strong>") kapsamında, "Veri Sorumlusu" sıfatıyla, tarafımıza sağladığınız kişisel verilerin ne şekilde, hangi amaçlarla ve hangi hukuki sebeplere dayanarak işlendiği, kimlere aktarılabileceği ve bu kapsamdaki haklarınız konusunda sizi bilgilendirmek isteriz.
               </p>
 
               <h3 className="font-serif text-lg font-semibold text-text-primary border-b border-border/30 pb-2">1. Veri Sorumlusunun Kimliği</h3>
               <p>
-                KVKK uyarınca muhatabınız; hukuk danışmanlığı, dava takibi ve hukuki süreç yönetimi faaliyetlerini yürüten <strong>MAT Hukuk Danışmanlık</strong> ("Büro") veri sorumlusudur.
+                KVKK uyarınca muhatabınız; hukuk danışmanlığı, dava takibi ve hukuki süreç yönetimi faaliyetlerini yürüten <strong>{siteInfo.name}</strong> ("Büro") veri sorumlusudur. Büro adresimiz: {siteInfo.address}.
               </p>
 
               <h3 className="font-serif text-lg font-semibold text-text-primary border-b border-border/30 pb-2">2. İşlenen Kişisel Verileriniz</h3>
@@ -51,6 +52,7 @@ export default function Kvkk() {
               <ul className="list-disc pl-5 space-y-1">
                 <li>Yetkili kamu kurum ve kuruluşları (Mahkemeler, İcra Daireleri, Savcılıklar vb.),</li>
                 <li>Bilişim altyapımızı sağlayan ve sunucu/hosting hizmeti aldığımız iş ortaklarımız (verilerin bulut ortamında tutulması amacıyla),</li>
+                <li>İletişim ve randevu formlarındaki bilgilerin büromuza e-posta ile ulaştırılması amacıyla form iletim hizmeti sağlayıcımız Web3Forms ve e-posta hizmeti sağlayıcılarımız,</li>
                 <li>Kanunen bilgi talep etmeye yetkili merciler ile,</li>
               </ul>
               <p>KVKK'nın 8. ve 9. maddelerinde belirtilen şartlar dahilinde, gerekli güvenlik önlemleri alınarak paylaşılabilecektir.</p>
@@ -72,17 +74,23 @@ export default function Kvkk() {
                 <li>Kişisel verilerin işlenme amacını ve bunların amacına uygun kullanılıp kullanılmadığını öğrenme,</li>
                 <li>Yurt içinde veya yurt dışında kişisel verilerin aktarıldığı üçüncü kişileri bilme,</li>
                 <li>Kişisel verilerin eksik veya yanlış işlenmiş olması hâlinde bunların düzeltilmesini isteme,</li>
-                <li>KVKK ve ilgili diğer kanun hükümlerine uygun olarak işlenmiş olmasına rağmen, işlenmesini gerektiren sebeplerin ortadan kalkması hâlinde kişisel verilerin silinmesini veya yok edilmesini isteme.</li>
+                <li>KVKK'nın 7. maddesindeki şartlar çerçevesinde kişisel verilerin silinmesini veya yok edilmesini isteme,</li>
+                <li>Düzeltme, silme veya yok etme işlemlerinin verilerin aktarıldığı üçüncü kişilere de bildirilmesini talep etme,</li>
+                <li>Verilerin yalnızca otomatik sistemlerle analiz edilmesi sonucunda aleyhinize oluşan sonuçlara itiraz etme,</li>
+                <li>Kişisel verilerinizin hukuka aykırı işlenmesi nedeniyle uğradığınız zararın giderilmesini talep etme.</li>
               </ul>
               
               <div className="mt-8 p-6 bg-cream rounded-xl border border-border/50">
                 <h4 className="font-semibold text-text-primary mb-2">Başvuru ve İletişim</h4>
                 <p className="text-sm">
-                  KVKK kapsamındaki haklarınıza ilişkin taleplerinizi, kimliğinizi tevsik edici belgeler ile birlikte <strong>ahmetnurullaherkan@gmail.com</strong> adresine e-posta yoluyla iletebilirsiniz. Talepleriniz, niteliğine göre en kısa sürede ve en geç otuz (30) gün içinde ücretsiz olarak sonuçlandırılacaktır.
+                  KVKK kapsamındaki haklarınıza ilişkin taleplerinizi, büromuza daha önce bildirdiğiniz ve sistemimizde kayıtlı bulunan e-posta adresinizden <a href={`mailto:${siteInfo.email}`} className="font-semibold text-navy underline break-all">{siteInfo.email}</a> adresine veya {siteInfo.address} adresine yazılı olarak iletebilirsiniz. Başvurularınızın Veri Sorumlusuna Başvuru Usul ve Esasları Hakkında Tebliğ'in 5. maddesinde belirtilen bilgi ve unsurları içermesi gerekir.
+                </p>
+                <p className="text-sm mt-3">
+                  Talepleriniz, niteliğine göre en kısa sürede ve başvurunuzun bize ulaşmasından itibaren en geç otuz (30) gün içinde kural olarak ücretsiz sonuçlandırılır. Ayrıca maliyet gerektiren işlemlerde yalnızca ilgili Tebliğ'de öngörülen ücret alınabilir.
                 </p>
               </div>
 
-              <p className="italic text-xs opacity-70 mt-4 text-right">Son güncelleme: {new Date().toLocaleDateString('tr-TR', { month: 'long', year: 'numeric' })}</p>
+              <p className="italic text-xs opacity-70 mt-4 text-right">Son güncelleme: <time dateTime="2026-11-21">21 Kasım 2026</time></p>
             </div>
           </motion.div>
         </div>

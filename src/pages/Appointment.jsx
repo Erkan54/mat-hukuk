@@ -23,7 +23,7 @@ export default function Appointment() {
     if (!formData.gorusmeTuru) errs.gorusmeTuru = 'Görüşme türü seçiniz.';
     if (!formData.tarih) errs.tarih = 'Tarih seçiniz.';
     if (!formData.saatAraligi) errs.saatAraligi = 'Saat aralığı seçiniz.';
-    if (!formData.kvkkOnay) errs.kvkkOnay = 'KVKK onayı zorunludur.';
+    if (!formData.kvkkOnay) errs.kvkkOnay = 'Lütfen KVKK Aydınlatma Metni\'ni okuduğunuzu doğrulayın.';
     if (!formData.iletisimOnay) errs.iletisimOnay = 'İletişim onayı zorunludur.';
     setErrors(errs);
     return Object.keys(errs).length === 0;
@@ -291,7 +291,7 @@ export default function Appointment() {
                         className="mt-1 w-4 h-4 accent-navy"
                       />
                       <span className="text-sm text-text-secondary">
-                        <a href="/kvkk-aydinlatma-metni" className="text-navy underline font-medium">KVKK Aydınlatma Metni</a>'ni okudum ve randevu talebim kapsamında kişisel verilerimin işlenmesini kabul ediyorum. *
+                        <a href="/kvkk-aydinlatma-metni" className="text-navy underline font-medium">KVKK Aydınlatma Metni</a>'ni okudum; randevu talebim kapsamında kişisel verilerimin işlenmesi hakkında bilgilendirildim. *
                       </span>
                     </label>
 
